@@ -1,0 +1,289 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Web.Api\\STN.Web.Api.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Bussiness\\STN.Bussiness.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Bussiness\\STN.Bussiness.csproj",
+        "projectName": "STN.Bussiness",
+        "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Bussiness\\STN.Bussiness.csproj",
+        "packagesPath": "C:\\Users\\Fredy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Bussiness\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Fredy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj": {
+                "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj"
+              },
+              "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj": {
+                "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj",
+        "projectName": "STN.Data",
+        "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj",
+        "packagesPath": "C:\\Users\\Fredy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Fredy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj": {
+                "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj",
+        "projectName": "STN.Entitie",
+        "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj",
+        "packagesPath": "C:\\Users\\Fredy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Fredy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Web.Api\\STN.Web.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Web.Api\\STN.Web.Api.csproj",
+        "projectName": "STN.Web.Api",
+        "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Web.Api\\STN.Web.Api.csproj",
+        "packagesPath": "C:\\Users\\Fredy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Web.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Fredy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Bussiness\\STN.Bussiness.csproj": {
+                "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Bussiness\\STN.Bussiness.csproj"
+              },
+              "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj": {
+                "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

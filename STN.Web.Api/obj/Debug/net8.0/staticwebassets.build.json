@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "x/lgFq+vJdFwIYOYCBy0C3IAblXJjnNyWif9QX2w/Ms=",
+  "Source": "STN.Web.Api",
+  "BasePath": "_content/STN.Web.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
