@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "STN.Entitie", "STN.Entitie\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "STN.Data", "STN.Data\STN.Data.csproj", "{9CFD8492-48C2-4EE5-8337-CAA57010D20A}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "stn.web.frontend", "STN.Web.FrontEnd\stn.web.frontend.esproj", "{12492545-BE0F-49BF-AA38-7732B395EFBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,12 @@ Global
 		{9CFD8492-48C2-4EE5-8337-CAA57010D20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CFD8492-48C2-4EE5-8337-CAA57010D20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CFD8492-48C2-4EE5-8337-CAA57010D20A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12492545-BE0F-49BF-AA38-7732B395EFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12492545-BE0F-49BF-AA38-7732B395EFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12492545-BE0F-49BF-AA38-7732B395EFBC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{12492545-BE0F-49BF-AA38-7732B395EFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12492545-BE0F-49BF-AA38-7732B395EFBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12492545-BE0F-49BF-AA38-7732B395EFBC}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
