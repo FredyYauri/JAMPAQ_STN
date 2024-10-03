@@ -1,52 +1,61 @@
-# Prerequisites
-*.d
+# ---- .NET Core ----
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# Visual Studio
 .vs/
-# Linker output
-*.ilk
-*.map
-*.exp
 
-# Precompiled Headers
-*.gch
-*.pch
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+# Auto-generated files
+*.log
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+# ---- React ----
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# Dependency directories
+node_modules/
+.pnp/
+.pnp.js
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build results
+/build
+
+# dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
