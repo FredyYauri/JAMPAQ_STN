@@ -1,0 +1,81 @@
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+
+// Default variable overrides
+@import "./variables";
+
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+@import "../node_modules/bootstrap/scss/mixins";
+
+// Create your own map
+$custom-colors: (
+    "primary-div": $primary-div,
+    "body-bg": $body-bg,
+    "danger-div": $danger-div,
+    "rating-color": $rating-color,
+    "card-bg-c": $card-bg-c,
+    "card-text-c": $card-text-c,
+    "gary-light": $gary-light,
+    "border-color": $border-color,
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$font-sizes: (
+    1: $h1-font-size,
+    2: $h2-font-size,
+    3: $h3-font-size,
+    4: $h4-font-size,
+    5: $h5-font-size,
+    6: $h6-font-size,
+);
+
+// Required Utilities Parts
+$utilities: (
+    "font-size": (
+        rfs: true,
+        property: font-size,
+        class: fs,
+        values: $font-sizes
+    ),
+);
+
+// Required
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/root";
+
+// Optional Bootstrap components here
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+
+// Required
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Page & Components
+// global Styles
+@import "./components/global";
+// Left Sidebar Menu
+@import "./components/sidebar-menu";
+@import "./components/main-content";
+@import "./components/header-area";
+@import "./components/footer-area";
+@import "./components/stats-box";
+@import "./components/sales-by-locations";
+@import "./components/default-table";
+@import "./components/pagination";
+@import "./components/calendar";
+@import "./components/chat";
+@import "./components/timeline";
+@import "./components/priceing";
+@import "./components/products";
+// RTL Style
+@import "./components/rtl";
+// Dark mode Style
+@import "./components/dark-mode";
+
+@import "./components/card-style";
+@import "./components/card-bg-style";
+@import "./components/fluid-boxed-style";
+@import "./components/landing-page";

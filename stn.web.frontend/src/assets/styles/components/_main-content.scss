@@ -1,0 +1,60 @@
+/* Main Content Area Style
+============================================*/
+.main-content {
+	padding-left: 300px;
+	transition: $transition;
+	padding-right: 25px;
+	min-height: 100vh;
+	
+	.inner-main-content {
+		padding-right: 18px;
+		transition: all ease 0.5s;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-height: 89.5vh;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.main-wrapper-content {
+		&.active {
+			.main-content {
+				padding-left: 92px;
+			}
+		}
+	}
+}
+
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width : 1200px) and (max-width : 1399px) {
+
+	.main-content {
+		padding-left: 262px;
+		transition: $transition;
+		padding-right: 12px;
+	}
+
+}
+
+/* Min width 1400px to Max width 1799px */
+@media only screen and (min-width : 1400px) and (max-width : 1799px) {
+
+	.main-content {
+		padding-left: 275px;
+		transition: $transition;
+		padding-right: 15px;
+	}
+
+}
+
+/* Max width 1199px */
+@media only screen and (max-width : 1199px) {
+
+	.main-content {
+		padding-left: 12px;
+		padding-right: 12px;
+	}
+
+}

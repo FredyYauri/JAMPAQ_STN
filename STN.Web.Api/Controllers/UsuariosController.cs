@@ -25,8 +25,16 @@ namespace STN.Web.Api.Controllers
             {
                 var resultado = _bsUsuario.ObtenerResultado(request.usuario, request.clave, request.compania);
                 ResponseUsuario response = new ResponseUsuario();
-                response.status = "OK";
-                response.data = ConvertDataTableToJson(resultado);
+                if (resultado.Rows.Count == 0)
+                { 
+                    response.status = 1;
+                    response.mesage = "Usuario o clave incorrectos";
+                }
+                else
+                {
+                    response.status = 0;
+                    response.data = ConvertDataTableToJson(resultado);
+                }
                 return Ok(response);
             }
             catch (Exception ex)
