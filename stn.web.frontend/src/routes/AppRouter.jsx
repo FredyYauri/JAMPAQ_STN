@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from '../modules/auth/LoginPage';
 import DashboardPage from '../modules/dashboard/DashboardPage';
 import ProfilePage from '../modules/profile/ProfilePage';
@@ -10,7 +10,7 @@ const AppRouter = () => (
             {/* Ruta por defecto redirige a Login */}
             <Route path="/" element={<Navigate to="/login" />} />
 
-            {/* Ruta pública para el login */}
+            {/* Ruta pï¿½blica para el login */}
             <Route path="/login" element={<LoginPage />} />
 
             {/* Rutas privadas */}            
@@ -18,7 +18,7 @@ const AppRouter = () => (
             <Route path="/profile/*" element={<PrivateRoute component={ProfilePage} />} />
 
             {/* Ruta por defecto para 404 */}
-            <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
+            <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
 );
 

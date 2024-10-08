@@ -1,4 +1,3 @@
-
 export const useCatchFetch = () => {
     const SendFetch = (promise, terminateLoading = false) => {
         promise.catch(GeneralCatch);
@@ -8,7 +7,11 @@ export const useCatchFetch = () => {
         return promise;
     }
     const GeneralCatch = (error) => {
-        console.error('Error:', error);
+        // console.error('Error en GeneralCatch:', error);
+        return error;
+        // if(error.message === 'Token-Error'){
+        //     navigateToLogin();
+        // }
         // TODO: Implementar un mensaje de 
         //error con un ojeto en el estado para que muestre un poput
     }

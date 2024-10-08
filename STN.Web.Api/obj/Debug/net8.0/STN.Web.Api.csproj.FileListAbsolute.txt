@@ -151,3 +151,5 @@ C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Web.Api\obj\Debug\net8.0\refint\STN.W
 C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Web.Api\obj\Debug\net8.0\STN.Web.Api.pdb
 C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Web.Api\obj\Debug\net8.0\STN.Web.Api.genruntimeconfig.cache
 C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Web.Api\obj\Debug\net8.0\ref\STN.Web.Api.dll
+C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Web.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Web.Api\bin\Debug\net8.0\System.ClientModel.dll
