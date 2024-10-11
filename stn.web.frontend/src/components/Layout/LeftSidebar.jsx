@@ -34,13 +34,20 @@ const LeftSidebar = ({ toogleActive }) => {
             href="/dashboard"
             className="d-block text-decoration-none position-relative"
           >
-            <img
+            {/* <img
               src="/images/logo-icon.png"
               alt="logo-icon"
               width={26}
               height={26}
+            /> */}
+
+            <img
+              src="/images/Recurso 1.png"
+              alt="logo-icon"
+              width={150}
+              height={100}
             />
-            <span className="logo-text fw-bold text-dark">STN</span>
+           {/*  <span className="logo-text fw-bold text-dark">STN</span> */}
           </a>
           <button
             className="sidebar-burger-menu bg-transparent p-0 border-0 opacity-0 z-n1 position-absolute top-50 end-0 translate-middle-y"
@@ -52,7 +59,7 @@ const LeftSidebar = ({ toogleActive }) => {
 
         <div className="sidebar-menu">
           <div className="menu-title small text-uppercase">
-            <span className="menu-title-text">OPCIONES</span>
+            <span className="menu-title-text">MENU DE OPCIONES</span>
           </div>
           {
             nivel1.map((item, index) => {

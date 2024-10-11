@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("STN.Entitie")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("STN.Bussiness")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54c3b2dbaf7f9c4c43d16323db798897afdbac31")]
-[assembly: System.Reflection.AssemblyProductAttribute("STN.Entitie")]
-[assembly: System.Reflection.AssemblyTitleAttribute("STN.Entitie")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f6118a3fe6af18d2560b1791fca166ea7f2a986")]
+[assembly: System.Reflection.AssemblyProductAttribute("STN.Bussiness")]
+[assembly: System.Reflection.AssemblyTitleAttribute("STN.Bussiness")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.

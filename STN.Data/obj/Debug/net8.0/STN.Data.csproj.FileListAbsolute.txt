@@ -29,3 +29,19 @@ C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\STN.Data.dll
 C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\refint\STN.Data.dll
 C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\STN.Data.pdb
 C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\ref\STN.Data.dll
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\bin\Debug\net8.0\STN.Data.deps.json
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\bin\Debug\net8.0\STN.Data.dll
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\bin\Debug\net8.0\STN.Data.pdb
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\bin\Debug\net8.0\STN.Entitie.dll
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\bin\Debug\net8.0\STN.Entitie.pdb
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\STN.Data.csproj.AssemblyReference.cache
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\STN.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\STN.Data.AssemblyInfoInputs.cache
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\STN.Data.AssemblyInfo.cs
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\STN.Data.csproj.CoreCompileInputs.cache
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\STN.Data.sourcelink.json
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\STN.Data.csproj.Up2Date
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\STN.Data.dll
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\refint\STN.Data.dll
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\STN.Data.pdb
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Data\obj\Debug\net8.0\ref\STN.Data.dll
