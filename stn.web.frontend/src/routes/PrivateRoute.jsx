@@ -10,7 +10,6 @@ import { useStnStore } from '../stores/useStateStore';
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const { isAuthenticated } = useAuth();
     const { loading } = useStnStore();
-    console.log('PrivateRoute isAuthenticated', isAuthenticated());
     return (
         <>
        {loading && <Loading />}

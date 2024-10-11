@@ -24,8 +24,6 @@ async function fetchData(url, options, requiredAuth = true) {
             body: options.method !== 'GET' && options.body ? JSON.stringify(options.body) : undefined,
             ...options
         };
-        console.log(options.method, url, options.body);
-        console.log(objectRequest);
         const response = await fetch(url, objectRequest);
 
         if (response.status === 401 || response.status === 403) {

@@ -70,9 +70,9 @@ const LeftSidebar = ({ toogleActive }) => {
                         {
                           subMenu.map((item2, index2) => {
                             const subMenu2 = nivel3.filter(x => x.IDPaginaPadre == item2.IDPagina);
-                            const num = `${index + 1}${index2}`;
+                            
                             return (
-                              <>
+                              <div key={item2.IDPagina}>
                                 {subMenu2.length > 0 && (
                                   // TODO: Pintar subMenu con sub menú
                                   <Accordion key={index} defaultActiveKey="0" flush>
@@ -91,8 +91,8 @@ const LeftSidebar = ({ toogleActive }) => {
                                                   <ul className="sub-menu" style={{paddingLeft: 30}} key={index3}>
                                                     <li className="menu-item">
                                                       <a
-                                                        href={item3.Descripcion}
-                                                        className={`menu-link ${pathname === item3.Descripcion ? "active" : ""
+                                                        href={item3.Ruta}
+                                                        className={`menu-link ${pathname === item3.Ruta ? "active" : ""
                                                           }`}
                                                       >
                                                         {item3.Abreviatura}
@@ -113,8 +113,8 @@ const LeftSidebar = ({ toogleActive }) => {
                                   <ul className="sub-menu" key={index2}>
                                     <li className="menu-item">
                                       <a
-                                        href={item2.Descripcion}
-                                        className={`menu-link ${pathname === item2.Descripcion ? "active" : ""
+                                        href={item2.Ruta}
+                                        className={`menu-link ${pathname === item2.Ruta ? "active" : ""
                                           }`}
                                       >
                                         {item2.Abreviatura}
@@ -122,7 +122,7 @@ const LeftSidebar = ({ toogleActive }) => {
                                     </li>
                                   </ul>
                                 )}
-                              </>
+                              </div>
                             )
                           })
                         }

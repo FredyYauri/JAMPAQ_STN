@@ -11,7 +11,6 @@ const Layout = ({ children }) => {
         setActive(!active);
     };
     useEffect(() => {
-        console.log('Layout token', sessionStorage.getItem('token'));
         if (!sessionStorage.getItem('token'))
             navigate('/login');
     }, [sessionStorage.getItem('token')]);

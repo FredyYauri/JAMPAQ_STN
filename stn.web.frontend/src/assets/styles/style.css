@@ -596,6 +596,10 @@ progress {
   display: none !important;
 }
 
+.allWidth{
+  width: 100% !important;
+}
+
 .lead {
   font-size: 1.1rem;
   font-weight: 300;
