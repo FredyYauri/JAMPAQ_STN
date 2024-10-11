@@ -82,7 +82,7 @@ const ToDoList = () => {
         <Card.Body className="p-0">
           <div className="p-4">
             <div className="d-flex justify-content-between align-items-center flex-wrap gap-3">
-              <h3 className="mb-0">To Do List</h3>
+              <h3 className="mb-0"></h3>
 
               <div className="d-flex align-items-center gap-2">
                 <SearchForm />
@@ -116,12 +116,14 @@ const ToDoList = () => {
                         />
                       </Form> 
                     </th>
-                    <th scope="col">Task Title</th>
-                    <th scope="col">Assigned To</th>
-                    <th scope="col">Due Date</th>
-                    <th scope="col">Priority</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">UM</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Rep.</th>
+                    <th scope="col">Opcion</th>
                   </tr>
                 </thead>
 
@@ -154,6 +156,10 @@ const ToDoList = () => {
                             {value.status}
                           </span>
                         </td>
+
+                        <td className="text-body">{value.dueDate}</td>
+
+                        <td className="text-body">{value.priority}</td>
 
                         <td>
                           <div className="d-flex align-items-center gap-1">
