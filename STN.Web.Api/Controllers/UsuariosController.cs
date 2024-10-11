@@ -56,14 +56,22 @@ namespace STN.Web.Api.Controllers
             }
         }
 
-        [HttpGet("prueba")]
+        [HttpPost("ObtenerPerfil")]
         [Authorize]
-        public IActionResult Prueba()
+        public IActionResult ObtenerPerfil([FromBody] RequestPerfil request)
         {
-            ResponseUsuario response = new ResponseUsuario();
-            response.status = 1;
-            response.mesage = "Usuario o clave incorrectos";
-            return Ok(response);
+            try
+            {
+                var resultado = _bsUsuario.ObtenerPerfil(request.idUsuario);
+                ResponsePerfil response = new ResponsePerfil();
+                response.status = 0;
+                response.data = ConvertDataTableToJson(resultado);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         #region Métodos Auxiliares

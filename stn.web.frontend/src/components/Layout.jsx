@@ -17,10 +17,14 @@ const Layout = ({ children }) => {
     }, [sessionStorage.getItem('token')]);
     return (
         <div className={`main-wrapper-content ${active && "active"}`}>
-            <LeftSidebar toogleActive={toogleActive} />
-            <TopNavbar toogleActive={toogleActive} />            
-            {children}
-            <Footer />
+            <div className='main-content d-flex flex-column'>
+                <LeftSidebar toogleActive={toogleActive} />
+                <TopNavbar toogleActive={toogleActive} />
+                    {children}
+                {/* <div className="main-content d-flex flex-column">
+                </div> */}
+                <Footer />
+            </div>
         </div>
     );
 };

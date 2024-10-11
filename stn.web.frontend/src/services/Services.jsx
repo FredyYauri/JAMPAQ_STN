@@ -5,7 +5,8 @@ export const sendValidarCredenciales = (usuario, clave, compania) => fetchData(`
     method: 'GET'
 }, false);
 
-export const prueba = () => fetchData(`${uri}Usuarios/prueba`, {
-    method: 'GET'
+export const getMenu = (usuario) => fetchData(`${uri}Usuarios/ObtenerPerfil`, {
+    method: 'POST',
+    body: JSON.stringify(usuario)
 });
 

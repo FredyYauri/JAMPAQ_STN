@@ -15,11 +15,11 @@ export const ModalConfirm = () => {
     }, [modalStore.isOpen]);
 
     const handleClose = () => {
-        console.log('modalStore.onCancel', modalStore.onCancel);
         if (modalStore.onCancel) {
             modalStore.onCancel();
         }
-        setShow(closeModalAndReset());
+        closeModalAndReset()
+        setShow(false);
     };
 
     const modalContent = (

@@ -15,6 +15,22 @@ namespace STN.Data.Seguridad
         {
             _context = context;
         }
+
+        public DataTable fn_ObtenerPerfil(string store, string idUsuario)
+        {
+            DataTable dtResultado = new DataTable();
+            try
+            {
+                SqlHelper helper = new SqlHelper(_context);
+                dtResultado = helper.fn_ObtenerResultado(store, idUsuario);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dtResultado;
+        }
+
         public DataTable fn_ObtenerResultado(string pStoreProcedure, params object[] pParametros)
         {
             DataTable dtResultado = new DataTable();

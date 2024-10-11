@@ -4,21 +4,20 @@ import LoginPage from '../modules/auth/LoginPage';
 import DashboardPage from '../modules/dashboard/DashboardPage';
 import ProfilePage from '../modules/profile/ProfilePage';
 import PrivateRoute from './PrivateRoute';
+import { ProductPage } from '../modules/products/ProductPage';
 
 const AppRouter = () => (
         <Routes>
-            {/* Ruta por defecto redirige a Login */}
             <Route path="/" element={<Navigate to="/login" />} />
-
-            {/* Ruta p�blica para el login */}
             <Route path="/login" element={<LoginPage />} />
 
             {/* Rutas privadas */}            
             <Route path="/dashboard/*" element={<PrivateRoute component={DashboardPage} />} />
             <Route path="/profile/*" element={<PrivateRoute component={ProfilePage} />} />
+            <Route path="/productos/*" element={<PrivateRoute component={ProductPage} />} />
 
             {/* Ruta por defecto para 404 */}
-            <Route path="*" element={<Navigate to="/login" />} />
+            <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>
 );
 

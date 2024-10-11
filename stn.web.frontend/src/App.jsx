@@ -1,5 +1,4 @@
-import './App.css'
-import './assets/styles/style.css'
+// import './App.css'
 import AppRouter from './routes/AppRouter'
 import { BrowserRouter } from 'react-router-dom' 
 import { AuthProvider } from './hooks/useAuth'

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MaterialSymbol } from "react-material-symbols";
 import "react-material-symbols/rounded";
 import Row from "react-bootstrap/Row";
@@ -12,7 +12,6 @@ import {
 const LoginPage = () => {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
     const { login } = useAuth();
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -24,7 +23,7 @@ const LoginPage = () => {
     };
 
     return (
-        <>
+        <div className='main-content d-flex flex-column'>
             <div className="auth-main-content m-auto m-1230 px-3">
                 <Row className="align-items-center">
                     <Col lg={6} className="d-none d-lg-block">
@@ -123,24 +122,24 @@ const LoginPage = () => {
                                     <Form.Control
                                         type="text"
                                         className="h-55"
-                                        placeholder="example@trezo.com"
+                                        placeholder="Ingrese Usuario"
                                         onChange={(e) => setUser(e.target.value)}
                                     />
                                 </Form.Group>
 
                                 <Form.Group className="mb-4">
-                                    <label className="label text-secondary">Password</label>
+                                    <label className="label text-secondary">Contraseña</label>
                                     <Form.Control
                                         type="password"
                                         className="h-55"
-                                        placeholder="Type password"
+                                        placeholder="Ingrese Contraseña"
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
                                 </Form.Group>
 
                                 <Form.Group className="mb-4">
                                     <Link to='/authentication/forgot-password/' className="fw-medium text-primary text-decoration-none">
-                                        Forgot Password?
+                                        Olvidó la Contraseña?
                                     </Link>
                                 </Form.Group>
 
@@ -155,28 +154,16 @@ const LoginPage = () => {
                                                 size={20}
                                                 className="text-white me-2"
                                             />
-                                            <span>Sign In</span>
+                                            <span>Ingresar</span>
                                         </div>
                                     </button>
-                                </Form.Group>
-
-                                <Form.Group>
-                                    <p>
-                                        Don�t have an account.{" "}
-                                        <Link
-                                            to="/authentication/sign-up/"
-                                            className="fw-medium text-primary text-decoration-none"
-                                        >
-                                            Sign Up
-                                        </Link>
-                                    </p>
                                 </Form.Group>
                             </Form>
                         </div>
                     </Col>
                 </Row>
             </div>
-        </>
+        </div>
     );
 };
 

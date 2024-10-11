@@ -14,4 +14,16 @@
         public String token { get; set; }
         public List<Dictionary<string, object>> data { get; set; }
     }
+
+    public class RequestPerfil
+    {
+        public String idUsuario { get; set; }
+    }
+
+    public class ResponsePerfil
+    {
+        public int status { get; set; }
+        public String mesage { get; set; } = "";
+        public List<Dictionary<string, object>> data { get; set; }
+    }
  }

@@ -1,26 +1,14 @@
-import { useEffect } from "react";
 import { useCatchFetch } from "../../hooks/useCatchFetch";
-import { prueba } from "../../services/Services";
-
-const { SendFetch } = useCatchFetch();
+import { useNavigate } from "react-router-dom";
 const DashboardPage = () => {
-    useEffect(() => {
-        console.log('DashboardPage');
-        SendFetch(prueba())
-            .then((data) => {
-                console.log('data', data);
-            });
-    }, []);
-    const refresh = () => {
-        console.log('Refresh');
-        SendFetch(prueba())
-            .then((data) => {
-                console.log('data', data);
-            });
+    const navigate = useNavigate();
+    const goProduct = () => {
+        navigate('/productos');
     }
     return (
         <div> <h1> Dashboard</h1>
-        <button onClick={refresh}>Click</button> </div>
+        <button onClick={goProduct}>Fetch</button>
+        </div>
     )
 }
 

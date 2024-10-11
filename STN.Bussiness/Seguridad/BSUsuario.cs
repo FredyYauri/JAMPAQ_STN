@@ -18,6 +18,12 @@ namespace STN.Bussiness.Seguridad
             _context = context;
         }
 
+        public DataTable ObtenerPerfil(string idUsuario)
+        {
+            var daUsuario = new DAUsuario(_context);
+            return daUsuario.fn_ObtenerPerfil("Seguridad.Pa_PerfilUsuario_Listar", idUsuario);
+        }
+
         public DataTable ObtenerResultado(String usu, String con, String emp)
         {
             var daUsuario = new DAUsuario(_context);

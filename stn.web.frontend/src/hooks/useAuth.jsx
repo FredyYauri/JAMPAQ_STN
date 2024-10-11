@@ -19,7 +19,7 @@ export const useAuth = () => {
 };
 
 const useProvideAuth = () => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({});
     const [load, setLoad] = useState(true);  // Nuevo estado de carga
     const navigate = useNavigate();
     const { setModalConfirm, setToken, logoutAndRedirect } = useStnStore();
