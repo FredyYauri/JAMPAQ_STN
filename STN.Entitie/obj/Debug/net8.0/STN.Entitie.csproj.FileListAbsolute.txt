@@ -21,3 +21,15 @@ C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Entitie\obj\Debug\net8.0\STN.Entitie.
 C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Entitie\obj\Debug\net8.0\refint\STN.Entitie.dll
 C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Entitie\obj\Debug\net8.0\STN.Entitie.pdb
 C:\Users\Fredy\source\repos\JAMPAQ_STN\STN.Entitie\obj\Debug\net8.0\ref\STN.Entitie.dll
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Entitie\bin\Debug\net8.0\STN.Entitie.deps.json
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Entitie\bin\Debug\net8.0\STN.Entitie.dll
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Entitie\bin\Debug\net8.0\STN.Entitie.pdb
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Entitie\obj\Debug\net8.0\STN.Entitie.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Entitie\obj\Debug\net8.0\STN.Entitie.AssemblyInfoInputs.cache
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Entitie\obj\Debug\net8.0\STN.Entitie.AssemblyInfo.cs
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Entitie\obj\Debug\net8.0\STN.Entitie.csproj.CoreCompileInputs.cache
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Entitie\obj\Debug\net8.0\STN.Entitie.sourcelink.json
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Entitie\obj\Debug\net8.0\STN.Entitie.dll
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Entitie\obj\Debug\net8.0\refint\STN.Entitie.dll
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Entitie\obj\Debug\net8.0\STN.Entitie.pdb
+C:\Users\OANCCASI\Desktop\JAMPAQ DOCUMENTO\1.0 Proyectos JAMPAQ S.A.C\04 - STN\Desarrollo\JAMPAQ_STN\STN.Entitie\obj\Debug\net8.0\ref\STN.Entitie.dll

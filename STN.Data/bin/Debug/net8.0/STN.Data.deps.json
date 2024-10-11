@@ -562,7 +562,10 @@
       },
       "STN.Entitie/1.0.0": {
         "runtime": {
-          "STN.Entitie.dll": {}
+          "STN.Entitie.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

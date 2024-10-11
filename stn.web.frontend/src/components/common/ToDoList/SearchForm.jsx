@@ -9,8 +9,7 @@ const SearchForm = () => {
   return (
     <>
       <Form className="position-relative table-src-form me-0">
-        <Form.Control type="text" placeholder="Search here" />
-
+        <Form.Control type="text" placeholder="Buscar ..." />
         <MaterialSymbol
           icon="search"
           className="position-absolute top-50 start-0 translate-middle-y"

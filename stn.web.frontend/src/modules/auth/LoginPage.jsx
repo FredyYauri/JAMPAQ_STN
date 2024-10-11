@@ -28,17 +28,18 @@ const LoginPage = () => {
                 <Row className="align-items-center">
                     <Col lg={6} className="d-none d-lg-block">
                         <img
-                            src="/images/login.jpg"
+                            src="/images/Recurso 4.png"
+                           /*  src="/images/login.jpg" */
                             className="rounded-3"
                             alt="login"
-                            width={646}
-                            height={804}
+                            width={500}
+                            height={700}
                         />
                     </Col>
 
                     <Col lg={6}>
                         <div className="mw-480 ms-lg-auto">
-                            <div className="d-inline-block mb-4">
+{/*                             <div className="d-inline-block mb-4">
                                 <img
                                     src="/images/logo.svg"
                                     className="rounded-3 for-light-logo"
@@ -53,14 +54,14 @@ const LoginPage = () => {
                                     width={100}
                                     height={26}
                                 />
-                            </div>
+                            </div> */}
 
-                            <h3 className="fs-28 mb-2">Welcome back to Trezo!</h3>
+                            <h3 className="fs-28 mb-2">Bienvenido</h3>
                             <p className="fw-medium fs-16 mb-4">
-                                Sign In with social account or enter your details
+                            Inicia sesión con una cuenta social o ingresa tus datos
                             </p>
 
-                            <div className="row justify-content-center">
+                            {/* <div className="row justify-content-center">
                                 <div className="col-lg-4 col-sm-4">
                                     <a
                                         href="https://www.google.com/"
@@ -114,7 +115,7 @@ const LoginPage = () => {
                                         />
                                     </a>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <Form onSubmit={handleLogin}>
                                 <Form.Group className="mb-4">

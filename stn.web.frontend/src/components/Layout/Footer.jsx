@@ -9,13 +9,13 @@ const Footer = () => {
 
       <footer className="footer-area bg-white text-center rounded-top-7">
         <p className="fs-14">
-          © <span className="text-primary-div">Trezo</span> is Proudly Owned by{" "}
+          © <span className="text-primary-div">CeciSoft</span> desarrollado por{" "}
           <a
-            href="https://envytheme.com/"
+            href="https://jampaq.pe/"
             target="_blank"
             className="text-decoration-none text-primary"
           >
-            EnvyTheme
+            JAMPAQ S.A.C.
           </a>
         </p>
       </footer>
