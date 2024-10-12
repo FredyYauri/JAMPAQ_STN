@@ -59,7 +59,7 @@ const LeftSidebar = ({ toogleActive }) => {
 
         <div className="sidebar-menu">
           <div className="menu-title small text-uppercase">
-            <span className="menu-title-text">MENU DE OPCIONES</span>
+            <span className="menu-title-text">MAIN</span>
           </div>
           {
             nivel1.map((item, index) => {
