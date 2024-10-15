@@ -1,12 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import ToDoList from '../../components/common/ToDoList'
+import { Card } from 'react-bootstrap'
 
 export const machineFile = () => {
   return (
-    <Card className="bg-white border-0 rounded-3 mb-4">
-      <Card.Body className="p-4">
-        <h4 className="fs-18 mb-4">EQUIPOS</h4>
-        <ToDoList />
-      </Card.Body>
-    </Card>
+    <h4 className="fs-18 mb-4">EQUIPOS</h4>
   )
 }
