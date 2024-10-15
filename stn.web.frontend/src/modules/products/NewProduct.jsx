@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap';
 import Form from "react-bootstrap/Form";
+import { ObtenerClaseProducto, ObtenerUnidadMedida } from '../../services/Services';
 
 export const NewProduct = ({
     description,
@@ -16,6 +17,18 @@ export const NewProduct = ({
     stockMinimo,
     setStockMinimo    
 }) => {
+    const [unidadMedidaList, setUnidadMedidaList] = useState([]);
+    const [tipoList, setTipoList] = useState([]);
+
+    useEffect(() => {
+        ObtenerUnidadMedida(1).then((data) => {
+            setUnidadMedidaList(data.data);
+        });
+        ObtenerClaseProducto().then((data) => {
+            console.log(data.data);
+            setTipoList(data.data);
+        });
+    }, [])
     return (
         <Form>
             <Row>
@@ -45,18 +58,11 @@ export const NewProduct = ({
                                 value={unidadMedida}
                                 onChange={(e) => setUnidadMedida(e.target.value)}
                             >
-                                <option value="0" className="text-dark">
-                                    United Kingdom
-                                </option>
-                                <option value="1" className="text-dark">
-                                    United States
-                                </option>
-                                <option value="2" className="text-dark">
-                                    Canada
-                                </option>
-                                <option value="3" className="text-dark">
-                                    France
-                                </option>
+                                { unidadMedidaList && unidadMedidaList.map((item, index) => (
+                                    <option key={index} value={item.Id} className="text-dark">
+                                        {item.Descripcion}
+                                    </option>
+                                ))}
                             </Form.Select>
                             <i className="ri-dropdown-list position-absolute top-50 start-0 translate-middle-y fs-20 ps-20"></i>
                         </Form.Group>
@@ -105,18 +111,11 @@ export const NewProduct = ({
                                 value={tipo}
                                 onChange={(e) => setTipo(e.target.value)}
                             >
-                                <option value="0" className="text-dark">
-                                    California
-                                </option>
-                                <option value="1" className="text-dark">
-                                    United States
-                                </option>
-                                <option value="2" className="text-dark">
-                                    Canada
-                                </option>
-                                <option value="3" className="text-dark">
-                                    France
-                                </option>
+                                { tipoList && tipoList.map((item, index) => (
+                                    <option key={index} value={item.Id} className="text-dark">
+                                        {item.Descripcion}
+                                    </option>
+                                ))}
                             </Form.Select>
                             <i className="ri-dropdown-list position-absolute top-50 start-0 translate-middle-y fs-20 ps-20"></i>
                         </Form.Group>

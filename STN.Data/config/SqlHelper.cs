@@ -217,7 +217,75 @@ namespace STN.Data
                     throw ex;
                 }
             }
-        } 
+        }
+
+
+        public DataTable fn_ObtenerResultadoValue(string store_p, params object[] Argumentos)
+        {
+            DataTable table2;
+
+            try
+            {
+                (int returnValue, DataSet resultSet) = this.fn_CrearAdaptadorValue(store_p, Argumentos);
+                table2 = resultSet.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return table2;
+        }
+        private (int, DataSet) fn_CrearAdaptadorValue(string store_p, params object[] Args)
+        {
+            SqlDataAdapter oSqlDataAdapter = null;
+            SqlConnection oSqlConnection = null;
+            DataSet oDataSet = new DataSet();
+            int returnValue = -1;
+
+            try
+            {
+                oSqlConnection = new SqlConnection(_connectionString.Database.GetConnectionString());
+                oSqlConnection.Open();
+
+                // Crear el comando para el stored procedure
+                SqlCommand comando = this.CreaComandos(store_p, oSqlConnection);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                // Añadir los parámetros si existen
+                if (Args.Length != 0)
+                {
+                    this.cargaParametros(comando, Args, false);
+                }
+
+                // Agregar parámetro de retorno
+                SqlParameter returnParameter = new SqlParameter();
+                returnParameter.ParameterName = "@ReturnValue";
+                returnParameter.SqlDbType = SqlDbType.Int;
+                returnParameter.Direction = ParameterDirection.ReturnValue;
+                comando.Parameters.Add(returnParameter);
+
+                // Llenar el DataSet con los resultados de la consulta
+                oSqlDataAdapter = new SqlDataAdapter(comando);
+                oSqlDataAdapter.Fill(oDataSet);
+
+                // Obtener el valor de retorno después de ejecutar el stored procedure
+                returnValue = (int)comando.Parameters["@ReturnValue"].Value;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oSqlConnection.Close();
+                if (oSqlConnection != null) ((IDisposable)oSqlConnection).Dispose();
+                if (oSqlDataAdapter != null) ((IDisposable)oSqlDataAdapter).Dispose();
+            }
+
+            // Devolver el valor de retorno y el DataSet
+            return (returnValue, oDataSet);
+        }
+        
         #endregion
     }
 }

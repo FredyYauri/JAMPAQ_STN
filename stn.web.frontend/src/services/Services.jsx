@@ -10,3 +10,11 @@ export const getMenu = (usuario) => fetchData(`${uri}Usuarios/ObtenerPerfil`, {
     body: JSON.stringify(usuario)
 });
 
+export const ObtenerUnidadMedida = (IDCompania) => fetchData(`${uri}Maestro/ObtenerUnidadMedida?IDCompania=${IDCompania}`, {
+    method: 'GET',
+});
+
+export const ObtenerClaseProducto = () => fetchData(`${uri}Maestro/ObtenerClaseProducto`, {
+    method: 'GET'
+});
+

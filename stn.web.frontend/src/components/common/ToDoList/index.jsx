@@ -20,7 +20,6 @@ const ToDoList = ({ options }) => {
 
   // TODO: asignando la lista original a items
   useEffect(() => {
-    console.log('options', options);
     setListView(options.list);
   }, [options.list])
 
