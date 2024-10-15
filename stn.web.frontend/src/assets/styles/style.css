@@ -16463,6 +16463,11 @@ Swiper Slider Style
   color: #fff;
   z-index: 0 !important;
 }
+.pagination .page-item.active .page-link {
+  background-color: #605DFF;
+  color: #fff;
+  z-index: 0 !important;
+}
 .pagination .page-item .page-link:hover {
   background-color: #605DFF;
   color: #fff;

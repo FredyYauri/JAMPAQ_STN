@@ -8,10 +8,11 @@ import { MaterialSymbol } from "react-material-symbols";
 import "react-material-symbols/rounded";
 import Form from 'react-bootstrap/Form';
 import PaginationTable from "./Pagination";
+import { useStnStore } from "../../../stores/useStateStore";
 
-const ToDoList = ({options}) => {
-  const[ listView, setListView ] = useState([]);
-  const[ listPagination, setListPagination ] = useState([]);
+const ToDoList = ({ options }) => {
+  const [listView, setListView] = useState([]);
+  const numItemsTable = useStnStore(state => state.numItemsTable);
   const [items, setItems] = useState();
   const setCurrenItems = (items) => {
     setItems(items);
@@ -22,7 +23,7 @@ const ToDoList = ({options}) => {
     console.log('options', options);
     setListView(options.list);
   }, [options.list])
-  
+
 
   // Función para manejar el filtrado
   const handleSearch = (searchTerm) => {
@@ -43,11 +44,21 @@ const ToDoList = ({options}) => {
         <Card.Body className="p-0">
           <div className="p-4">
             <div className="d-flex justify-content-between align-items-center flex-wrap gap-3">
-              <h3 className="mb-0"></h3>
-
               <div className="d-flex align-items-center gap-2">
-                <SearchForm onSearch={handleSearch}/>
+                <SearchForm onSearch={handleSearch} />
 
+              </div>
+              <div className="text-end">
+              { options.nameAction && <button
+                  className="btn btn-outline-primary py-1 px-2 px-sm-4 fs-14 fw-medium rounded-3 hover-bg"
+                  onClick={() => { options.acction() }}
+                >
+                  <span className="py-sm-1 d-block">
+                    <i className="ri-add-line"></i>
+                    <span>{ options.nameAction }</span>
+                  </span>
+                </button>
+}
               </div>
             </div>
           </div>
@@ -62,9 +73,9 @@ const ToDoList = ({options}) => {
                         <Form.Check
                           type="checkbox"
                           id="default-checkbox"
-                          label="ID" 
+                          label="ID"
                         />
-                      </Form> 
+                      </Form>
                     </th>
                     <th scope="col">Description</th>
                     <th scope="col">Codigo</th>
@@ -79,7 +90,7 @@ const ToDoList = ({options}) => {
 
                 <tbody>
                   {items &&
-                    items.slice(0, 5).map((value, i) => (
+                    items.slice(0, numItemsTable).map((value, i) => (
                       <tr key={i}>
                         <td className="text-body">
                           <Form>
@@ -88,7 +99,7 @@ const ToDoList = ({options}) => {
                               id={value.id}
                               label={value.id}
                             />
-                          </Form> 
+                          </Form>
                         </td>
 
                         <td className="text-body">{value.taskTitle}</td>
@@ -113,10 +124,10 @@ const ToDoList = ({options}) => {
 
                         <td>
                           <div className="d-flex align-items-center gap-1">
-                            { options.detail && <button 
+                            {options.detail && <button
                               className="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
                               onClick={() => options.detail.detailAction(value.id)}
-                              >
+                            >
                               <MaterialSymbol
                                 icon="visibility"
                                 size={16}
@@ -124,7 +135,7 @@ const ToDoList = ({options}) => {
                               />
                             </button>}
 
-                            { options.update && <button 
+                            {options.update && <button
                               className="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
                               onClick={() => options.update.updateAction(value.id)}
                             >
@@ -135,7 +146,7 @@ const ToDoList = ({options}) => {
                               />
                             </button>}
 
-                            { options.delete && <button 
+                            {options.delete && <button
                               className="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
                               onClick={() => options.delete.deleteAction(value.id)}
                             >
@@ -151,7 +162,7 @@ const ToDoList = ({options}) => {
                     ))}
                 </tbody>
               </Table>
-              <PaginationTable list = {listView} setCurrenItems = {setCurrenItems}/>            
+              <PaginationTable list={listView} setCurrenItems={setCurrenItems} />
             </div>
           </div>
         </Card.Body>

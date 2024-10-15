@@ -559,10 +559,7 @@
           "STN.Entitie": "1.0.0"
         },
         "runtime": {
-          "STN.Bussiness.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "STN.Bussiness.dll": {}
         }
       },
       "STN.Data/1.0.0": {
@@ -571,18 +568,12 @@
           "STN.Entitie": "1.0.0"
         },
         "runtime": {
-          "STN.Data.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "STN.Data.dll": {}
         }
       },
       "STN.Entitie/1.0.0": {
         "runtime": {
-          "STN.Entitie.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "STN.Entitie.dll": {}
         }
       }
     }

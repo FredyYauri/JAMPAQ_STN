@@ -33,4 +33,6 @@ export const useStnStore = create((set) => ({
     //loadding
     loading: false,
     setLoading: (load) => set(state => ({ loading: load })),
+
+    numItemsTable: 5,
 }))

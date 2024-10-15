@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "react-material-symbols/rounded";
 import Pagination from "react-bootstrap/Pagination";
+import { useStnStore } from "../../../stores/useStateStore";
 
 const PaginationTable = ({ list, setCurrenItems }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = useStnStore(state => state.numItemsTable);
   const [paginationItems, setPaginationItems] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
     // Calcula los datos a mostrar en la página actual
     if (!list || list.length === 0) return;
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    setCurrenItems(list.slice(indexOfFirstItem, indexOfLastItem));
+    const items = list.slice(indexOfFirstItem, indexOfLastItem)
+    setCurrenItems(items);
+    setTotalItems(items.length);
 
     // Calcular número total de páginas
     setTotalPages(Math.ceil(list.length / itemsPerPage));
@@ -38,12 +42,16 @@ const PaginationTable = ({ list, setCurrenItems }) => {
       );
     }
     setPaginationItems(items); // Actualizamos fuera del bucle
-  }, [totalPages, list]); // totalPages agregado como dependencia
+  }, [totalPages, list, currentPage]); // totalPages agregado como dependencia
 
   return (
     <>{paginationItems.length > 0 && (
-      <div className="p-4">
-        <Pagination>{paginationItems}</Pagination>
+      <div className="p-2">
+        <div className="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap">
+          <span className="fs-12 fw-medium">Mostrando { totalItems } de { list.length } </span>
+          <Pagination>{paginationItems}</Pagination>
+        </div>
+
       </div>
     )}</>
   );

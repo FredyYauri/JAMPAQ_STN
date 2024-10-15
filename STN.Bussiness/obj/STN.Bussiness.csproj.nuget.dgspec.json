@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Bussiness\\STN.Bussiness.csproj": {}
+    "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Bussiness\\STN.Bussiness.csproj": {}
   },
   "projects": {
-    "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Bussiness\\STN.Bussiness.csproj": {
+    "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Bussiness\\STN.Bussiness.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Bussiness\\STN.Bussiness.csproj",
+        "projectUniqueName": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Bussiness\\STN.Bussiness.csproj",
         "projectName": "STN.Bussiness",
-        "projectPath": "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Bussiness\\STN.Bussiness.csproj",
-        "packagesPath": "C:\\Users\\OANCCASI\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Bussiness\\obj\\",
+        "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Bussiness\\STN.Bussiness.csproj",
+        "packagesPath": "C:\\Users\\Fredy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Bussiness\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\OANCCASI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fredy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -23,17 +23,17 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://www.nuget.org/api/v2/": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj": {
-                "projectPath": "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj"
+              "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj": {
+                "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj"
               },
-              "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj": {
-                "projectPath": "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj"
+              "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj": {
+                "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj"
               }
             }
           }
@@ -68,21 +68,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj": {
+    "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj",
         "projectName": "STN.Data",
-        "projectPath": "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj",
-        "packagesPath": "C:\\Users\\OANCCASI\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Data\\obj\\",
+        "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Data\\STN.Data.csproj",
+        "packagesPath": "C:\\Users\\Fredy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\OANCCASI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fredy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -91,14 +91,14 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://www.nuget.org/api/v2/": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj": {
-                "projectPath": "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj"
+              "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj": {
+                "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj"
               }
             }
           }
@@ -139,21 +139,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj": {
+    "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj",
+        "projectUniqueName": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj",
         "projectName": "STN.Entitie",
-        "projectPath": "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj",
-        "packagesPath": "C:\\Users\\OANCCASI\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\OANCCASI\\Desktop\\JAMPAQ DOCUMENTO\\1.0 Proyectos JAMPAQ S.A.C\\04 - STN\\Desarrollo\\JAMPAQ_STN\\STN.Entitie\\obj\\",
+        "projectPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\STN.Entitie.csproj",
+        "packagesPath": "C:\\Users\\Fredy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fredy\\source\\repos\\JAMPAQ_STN\\STN.Entitie\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\OANCCASI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fredy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -162,7 +162,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://www.nuget.org/api/v2/": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -200,7 +200,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
