@@ -58,6 +58,7 @@ export const NewProduct = ({
                                 value={unidadMedida}
                                 onChange={(e) => setUnidadMedida(e.target.value)}
                             >
+                                <option value="-1" disabled>Seleccione una unidad de medida</option>
                                 { unidadMedidaList && unidadMedidaList.map((item, index) => (
                                     <option key={index} value={item.Id} className="text-dark">
                                         {item.Descripcion}
@@ -111,7 +112,8 @@ export const NewProduct = ({
                                 value={tipo}
                                 onChange={(e) => setTipo(e.target.value)}
                             >
-                                { tipoList && tipoList.map((item, index) => (
+                                 <option value="-1" disabled>Seleccione un tipo de producto</option>
+                                 { tipoList && tipoList.map((item, index) => (
                                     <option key={index} value={item.Id} className="text-dark">
                                         {item.Descripcion}
                                     </option>

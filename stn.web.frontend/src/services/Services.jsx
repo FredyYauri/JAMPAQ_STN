@@ -18,3 +18,7 @@ export const ObtenerClaseProducto = () => fetchData(`${uri}Maestro/ObtenerClaseP
     method: 'GET'
 });
 
+export const ObtenerProducto = () => fetchData(`${uri}Producto/ObtenerProductos`, {
+    method: 'GET',
+});
+

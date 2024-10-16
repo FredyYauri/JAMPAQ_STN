@@ -38,7 +38,7 @@ namespace STN.Web.Api.Controllers
                     response.status = 0;
                     response.data = helper.ConvertDataTableToJson(resultado);
                 }
-                return Ok(resultado);
+                return Ok(response);
             }
             catch (Exception ex)
             {

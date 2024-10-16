@@ -118,7 +118,14 @@ namespace STN.Data
             {
                 DataSet dataSet = new DataSet();
                 dataSet = this.fn_CrearAdaptador(store_p, Argumentos);
-                table2 = dataSet.Tables[0];
+                if (dataSet.Tables.Count != 0)
+                {
+                    table2 = dataSet.Tables[0];
+                }
+                else
+                {
+                    table2 = new DataTable();
+                }
             }
             catch (Exception ex)
             {
@@ -227,7 +234,14 @@ namespace STN.Data
             try
             {
                 (int returnValue, DataSet resultSet) = this.fn_CrearAdaptadorValue(store_p, Argumentos);
-                table2 = resultSet.Tables[0];
+                if (returnValue == 0 && resultSet.Tables.Count != 0)
+                {
+                    table2 = resultSet.Tables[0];
+                }
+                else
+                {
+                    table2 = new DataTable();
+                }
             }
             catch (Exception ex)
             {
