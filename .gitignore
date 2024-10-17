@@ -15,6 +15,7 @@ bld/
 [Oo]bj/
 **/[Oo]bj/
 **/[Bb]in/
+STN.Data/obj
 
 # User-specific files
 *.rsuser
