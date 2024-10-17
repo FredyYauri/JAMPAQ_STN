@@ -20,13 +20,13 @@ const AppRouter = () => (
             {/* Rutas privadas */}            
             <Route path="/dashboard/*" element={<PrivateRoute component={DashboardPage} />} />
             <Route path="/profile/*" element={<PrivateRoute component={ProfilePage} />} />
-            <Route path="/productos/*" element={<PrivateRoute component={ProductPage} />} />
-            <Route path="/equipos/*"   element={<PrivateRoute component={machineFile}/>}/>
-            <Route path="/MantenimientoEquipo/*" element={<PrivateRoute component={MachineMaintenance}/>}/>
-            <Route path="/Personal/*" element={<PrivateRoute component={PersonalPage}/>}/>
-            <Route path="/Salarios/*" element={<PrivateRoute component={PaymentSlip}/>}/>
-            <Route path="/Transaccion/*" element={<PrivateRoute component={TransactionPage}/>}/>
-            <Route path="/Kardex/*" element={<PrivateRoute component={Kardex} />} />
+            <Route path="Logistica/Productos/*" element={<PrivateRoute component={ProductPage} />} />
+            <Route path="Equipos/Equipos/*"   element={<PrivateRoute component={machineFile}/>}/>
+            <Route path="Equipos//MantenimientoEquipo/*" element={<PrivateRoute component={MachineMaintenance}/>}/>
+            <Route path="RRHH/Personal/*" element={<PrivateRoute component={PersonalPage}/>}/>
+            <Route path="RRHH/Salarios/*" element={<PrivateRoute component={PaymentSlip}/>}/>
+            <Route path="Logistica/Transaccion/*" element={<PrivateRoute component={TransactionPage}/>}/>
+            <Route path="Logistica/Kardex/*" element={<PrivateRoute component={Kardex} />} />
             {/* Ruta por defecto para 404 */}
             <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>

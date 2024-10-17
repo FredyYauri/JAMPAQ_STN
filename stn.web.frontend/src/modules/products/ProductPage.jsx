@@ -4,6 +4,9 @@ import { Card } from 'react-bootstrap'
 import ContentModal from '../../components/common/modals/modalForm/modalForm'
 import { NewProduct } from './NewProduct'
 import { ObtenerProducto } from '../../services/Services'
+import DetailProduct from './DetailProduct'
+import HeadBreadCrumb from '../../components/common/headBreadCrumb'
+import ListProductComponent from './ListProduct'
 
 export const ProductPage = () => {
   const [options, setOptions] = useState({});
@@ -60,8 +63,11 @@ export const ProductPage = () => {
     console.log('Delete Action', id);
   }
   const detailAction = (id) => {
-    //TODO: Implementar la acción de detalle
-    console.log('Detail Action', id);
+    return(
+      <ContentModal options={{show: true, title: 'Detalle Producto', onHide: () => {console.log('Close')}}}>
+        <DetailProduct product = { id } />
+      </ContentModal>
+    )
   }
   const showModalNewProduct = () => {
     setShowModal(true);
@@ -88,11 +94,8 @@ export const ProductPage = () => {
     <>
       <Card className="bg-white border-0 rounded-3 mb-4">
         <Card.Body className="p-4">
-          <h4 className="fs-18 mb-4">PRODUCTOS</h4>
-          <ToDoList 
-          options={options} 
-          data={ fetchData } 
-          columns={ columns } />
+         <HeadBreadCrumb />
+         <ListProductComponent />
         </Card.Body>
       </Card>
       <ContentModal
