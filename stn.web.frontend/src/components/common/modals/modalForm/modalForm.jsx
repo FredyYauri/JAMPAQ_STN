@@ -25,7 +25,7 @@ const ContentModal=({options, children}) => {
       </Modal.Body>
       <Modal.Footer>
         {nameAction && <Button onClick={onAction}>{nameAction}</Button>}
-        <Button onClick={onHide}>Cerrar</Button>
+        <Button variant="danger" onClick={onHide}>Cerrar</Button>
       </Modal.Footer>
     </Modal>
   );
