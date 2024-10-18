@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useImperativeHandle, forwardRef, useState, useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap';
 import Form from "react-bootstrap/Form";
 import { ObtenerClaseProducto, ObtenerUnidadMedida } from '../../services/Services';
 
-export const NewProduct = ({
-    description,
-    setDescription,
-    unidadMedida,
-    setUnidadMedida,
-    marca,
-    setMarca,
-    serie,
-    setSerie,
-    tipo,
-    setTipo,
-    stockMinimo,
-    setStockMinimo    
-}) => {
+const NewProduct = forwardRef((props, ref) => {
     const [unidadMedidaList, setUnidadMedidaList] = useState([]);
     const [tipoList, setTipoList] = useState([]);
-
+    const [description, setDescription] = useState('');
+    const [unidadMedida, setUnidadMedida] = useState('');
+    const [marca, setMarca] = useState('');
+    const [serie, setSerie] = useState('');
+    const [tipo, setTipo] = useState('');
+    const [stockMinimo, setStockMinimo] = useState('');
+    
     useEffect(() => {
         ObtenerUnidadMedida(1).then((data) => {
             setUnidadMedidaList(data.data);
@@ -29,6 +22,51 @@ export const NewProduct = ({
             setTipoList(data.data);
         });
     }, [])
+
+      // Exponer el método saveProduct al componente padre
+  useImperativeHandle(ref, () => ({
+    saveProduct() {
+      // Lógica para guardar el producto
+    //   const validationErrors = validateFields();
+    //   if (Object.keys(validationErrors).length > 0) {
+    //     setErrors(validationErrors);
+    //     return;
+    //   }
+
+    //   const productData = {
+    //     productName,
+    //     price,
+    //     description,
+    //   };
+      console.log('Producto guardado desde el hijo:', description);
+      // Aquí puedes agregar la lógica para guardar el producto
+    }
+  }));
+
+  /// método para validar el formulario
+    const validateFields = () => {
+        const errors = {};
+        if (!description) {
+            errors.description = 'La descripción es requerida';
+        }
+        if (!unidadMedida) {
+            errors.unidadMedida = 'La unidad de medida es requerida';
+        }
+        if (!marca) {
+            errors.marca = 'La marca es requerida';
+        }
+        if (!serie) {
+            errors.serie = 'La serie es requerida';
+        }
+        if (!tipo) {
+            errors.tipo = 'El tipo es requerido';
+        }
+        if (!stockMinimo) {
+            errors.stockMinimo = 'El stock mínimo es requerido';
+        }
+        return errors;
+    }
+
     return (
         <Form>
             <Row>
@@ -59,7 +97,7 @@ export const NewProduct = ({
                                 onChange={(e) => setUnidadMedida(e.target.value)}
                             >
                                 <option value="-1" disabled>Seleccione una unidad de medida</option>
-                                { unidadMedidaList && unidadMedidaList.map((item, index) => (
+                                {unidadMedidaList && unidadMedidaList.map((item, index) => (
                                     <option key={index} value={item.Id} className="text-dark">
                                         {item.Descripcion}
                                     </option>
@@ -112,8 +150,8 @@ export const NewProduct = ({
                                 value={tipo}
                                 onChange={(e) => setTipo(e.target.value)}
                             >
-                                 <option value="-1" disabled>Seleccione un tipo de producto</option>
-                                 { tipoList && tipoList.map((item, index) => (
+                                <option value="-1" disabled>Seleccione un tipo de producto</option>
+                                {tipoList && tipoList.map((item, index) => (
                                     <option key={index} value={item.Id} className="text-dark">
                                         {item.Descripcion}
                                     </option>
@@ -142,4 +180,6 @@ export const NewProduct = ({
             </Row>
         </Form>
     )
-}
+})
+
+export default NewProduct;

@@ -8,6 +8,6 @@ import { ModalConfirm } from './components/common/modals/modalConfirm.jsx'
 createRoot(document.getElementById('root')).render(
     <StrictMode>
         <App />
-        <ModalConfirm />        
+        <ModalConfirm />     
     </StrictMode>
 )

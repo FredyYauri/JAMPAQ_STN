@@ -35,4 +35,15 @@ export const useStnStore = create((set) => ({
     setLoading: (load) => set(state => ({ loading: load })),
 
     numItemsTable: 5,
+
+    ModalContent: {
+        isOpen: false,
+        title: '',
+        body: null,
+        labelClose: 'Cerrar',
+        labelAction: 'Aceptar',
+        onCancel: () => { },
+        onAction: () => { },
+    },
+    setModalContent: (content) => set({ ModalContent: content }),
 }))

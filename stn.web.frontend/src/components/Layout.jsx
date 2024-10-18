@@ -3,6 +3,7 @@ import LeftSidebar from './Layout/LeftSidebar';
 import TopNavbar from './Layout/TopNavbar/index';
 import Footer from './Layout/Footer';
 import { useNavigate } from 'react-router-dom';
+import ContentModal from './common/modals/modalForm/modalForm';
 
 const Layout = ({ children }) => {
     const [active, setActive] = useState(false);
@@ -20,9 +21,8 @@ const Layout = ({ children }) => {
                 <LeftSidebar toogleActive={toogleActive} />
                 <TopNavbar toogleActive={toogleActive} />
                     {children}
-                {/* <div className="main-content d-flex flex-column">
-                </div> */}
-                <Footer />
+                <Footer /> 
+                <ContentModal />  
             </div>
         </div>
     );
