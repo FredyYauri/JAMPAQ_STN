@@ -17,7 +17,7 @@ const SearchForm = ({ onSearch }) => {
     <Form className="position-relative table-src-form me-0">
       <Form.Control
         type="text"
-        placeholder="Search here"
+        placeholder="Buscar"
         value={searchTerm}
         onChange={handleSearchChange}
       />

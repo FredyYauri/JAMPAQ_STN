@@ -14,7 +14,7 @@ namespace STN.Web.Api.Controllers
         private readonly IConfiguration _configuration;
         public MaestroController(ApplicationDbContext context, IConfiguration configuration)
         {
-            _bsOpcionesMaestros = new BSOpcionesMaestros(context);
+            _bsOpcionesMaestros = new BSOpcionesMaestros(context, configuration);
             _configuration = configuration;
         }
 
@@ -45,19 +45,46 @@ namespace STN.Web.Api.Controllers
             }
         }
 
-        [HttpGet("ObtenerClaseProducto")]
+        [HttpGet("ObtenerTipoProducto")]
         [Authorize]
-        public IActionResult ObtenerClaseProducto()
+        public IActionResult ObtenerTipoProducto()
         {
             Helper helper = new Helper();
             try
             {
-                var resultado = _bsOpcionesMaestros.ObtenerClaseProducto();
+                var resultado = _bsOpcionesMaestros.ObtenerTipoProducto();
                 ResponseMaestro response = new ResponseMaestro();
                 if (resultado.Rows.Count == 0)
                 {
                     response.status = 1;
                     response.mesage = "No se encontraron clases de producto";
+                }
+                else
+                {
+                    response.status = 0;
+                    response.data = helper.ConvertDataTableToJson(resultado);
+                }
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("ObtenerMarca")]
+        [Authorize]
+        public IActionResult ObtenerMarca([FromQuery] RequestMaestro request)
+        {
+            Helper helper = new Helper();
+            try
+            {
+                var resultado = _bsOpcionesMaestros.ObtenerMarca(request.IDCompania);
+                ResponseMaestro response = new ResponseMaestro();
+                if (resultado.Rows.Count == 0)
+                {
+                    response.status = 1;
+                    response.mesage = "No se encontraron marcas";
                 }
                 else
                 {

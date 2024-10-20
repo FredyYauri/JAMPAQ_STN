@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { ObtenerProducto } from '../../services/Services';
+import { EliminarProducto, ObtenerProducto } from '../../services/Services';
 import ToDoList from '../../components/common/ToDoList';
 import DetailProduct from './DetailProduct';
 import { useStnStore } from '../../stores/useStateStore';
 import NewProduct from './NewProduct';
 
 const ListProductComponent = () => {
-    const { setModalContent } = useStnStore();
+    const { setModalContent, showModalError } = useStnStore();
     const [fetchData, setFetchData] = useState([]);
     const [optionsList, setOptionsList] = useState();
     const formRef = useRef();
@@ -26,21 +26,25 @@ const ListProductComponent = () => {
             nameButtonAction: 'Nuevo Producto',
             acctionButton: showModalNewProduct,
         });
+        listarProductos();
+    }, [])
+
+    const listarProductos = () => {
         ObtenerProducto().then((data) => {
             setFetchData(data.data);
         });
-    }, [])
+    }
 
     const columns = [
-        { label: "ID", field: "ID" },
+        { label: "ID", field: "Id" },
         { label: "Descripción", field: "Descripcion" },
         { label: "Codigo", field: "Codigo" },
+        { label: "Tipo", field: "Tipo" },
         { label: "UM", field: "Unidad" },
-        { label: "Tipo", field: "Factor" },
+        { label: "Stock Mínimo", field: "StockMinimo" },
+        { label: "Stock Actual", field: "StockActual" },
+        { label: "Rep.", field: "Reposicion" },
         { label: "Estado", field: "Estado" },
-        { label: "Stock Mínimo", field: "StockTransito" },
-        { label: "Stock Actual", field: "StockDisponible" },
-        { label: "Rep.", field: "Observacion" },
     ];
 
     const updateAction = (id) => {
@@ -48,8 +52,25 @@ const ListProductComponent = () => {
         console.log('Update Action', id);
     }
     const deleteAction = (id) => {
-        //TODO: Implementar la acción de eliminar
-        console.log('Delete Action', id);
+        setModalContent({
+            isOpen: true,
+            title: 'Eliminar Producto',
+            body: '¿Está seguro de eliminar el producto?',
+            size: 'sm',
+            labelClose: 'Cancelar',
+            onCancel: () => setModalContent({ isOpen: false }),
+            labelAction: 'Eliminar',
+            onAction: () => {
+                EliminarProducto(id).then((data) => {
+                    if (data.data) {
+                        listarProductos();
+                        setModalContent({ isOpen: false })
+                    }else{
+                        showModalError('Error al eliminar el producto');
+                    }
+                });
+            }
+        });
     }
     const detailAction = (id) => {
         setModalContent({
@@ -69,7 +90,7 @@ const ListProductComponent = () => {
     const showModalNewProduct = () => {
         setModalContent({
             isOpen: true,
-            title: 'Add New Product',
+            title: 'Nuevo Producto',
             body: (<NewProduct
                 ref={formRef}
             />),
@@ -80,7 +101,7 @@ const ListProductComponent = () => {
                 if (formRef.current) {
                     formRef.current.saveProduct();
                 }
-                setModalContent({ isOpen: false });
+                // setModalContent({ isOpen: false });
             },
         })
     }

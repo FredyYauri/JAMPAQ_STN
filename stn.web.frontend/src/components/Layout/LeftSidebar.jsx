@@ -14,7 +14,8 @@ const LeftSidebar = ({ toogleActive }) => {
   useEffect(() => {
     const usuario = sessionStorage.getItem('user');
     const request = {
-      'idUsuario': (JSON.parse(usuario).IDUsuario).toString()
+      'idUsuario': (JSON.parse(usuario).IDUsuario).toString(),
+      'idCompania': 1
     }
     getMenu(request).then((res) => {
       if (res.status === 0) {
@@ -34,20 +35,12 @@ const LeftSidebar = ({ toogleActive }) => {
             href="/dashboard"
             className="d-block text-decoration-none position-relative"
           >
-            {/* <img
-              src="/images/logo-icon.png"
-              alt="logo-icon"
-              width={26}
-              height={26}
-            /> */}
-
             <img
               src="/images/Recurso 1.png"
               alt="logo-icon"
               width={150}
               height={100}
             />
-           {/*  <span className="logo-text fw-bold text-dark">STN</span> */}
           </a>
           <button
             className="sidebar-burger-menu bg-transparent p-0 border-0 opacity-0 z-n1 position-absolute top-50 end-0 translate-middle-y"

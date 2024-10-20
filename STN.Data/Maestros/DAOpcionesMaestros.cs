@@ -16,16 +16,22 @@ namespace STN.Data.Maestros
             this.context = context;
         }
 
-        public DataTable fn_ObtenerClaseProducto(string v)
+        public DataTable ObtenerTipoProducto(string v)
         {
             SqlHelper helper = new SqlHelper(context);
             return helper.fn_ObtenerResultadoValue(v);
         }
 
-        public DataTable fn_ObtenerUnidadMedida(string v, string iDCompania)
+        public DataTable fn_ObtenerMarca(string v, string IdCompania)
         {
             SqlHelper helper = new SqlHelper(context);
-            return helper.fn_ObtenerResultadoValue(v, iDCompania);
+            return helper.fn_ObtenerResultadoValue(v, IdCompania);
+        }
+
+        public DataTable fn_ObtenerUnidadMedida(string v, string IdCompania)
+        {
+            SqlHelper helper = new SqlHelper(context);
+            return helper.fn_ObtenerResultadoValue(v, IdCompania);
         }
     }
 }

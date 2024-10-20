@@ -16,13 +16,13 @@ namespace STN.Data.Seguridad
             _context = context;
         }
 
-        public DataTable fn_ObtenerPerfil(string store, string idUsuario)
+        public DataTable fn_ObtenerPerfil(string store, string idUsuario, int IdCompania)
         {
             DataTable dtResultado = new DataTable();
             try
             {
                 SqlHelper helper = new SqlHelper(_context);
-                dtResultado = helper.fn_ObtenerResultado(store, idUsuario);
+                dtResultado = helper.fn_ObtenerResultado(store, idUsuario, IdCompania);
             }
             catch (Exception ex)
             {
@@ -31,7 +31,7 @@ namespace STN.Data.Seguridad
             return dtResultado;
         }
 
-        public DataTable fn_ObtenerResultado(string pStoreProcedure, params object[] pParametros)
+        public DataTable ValidarUsuario(string pStoreProcedure, params object[] pParametros)
         {
             DataTable dtResultado = new DataTable();
             try

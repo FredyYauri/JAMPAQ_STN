@@ -7,14 +7,14 @@ import { useStnStore } from '../../../../stores/useStateStore';
 
 const ContentModal = () => {
   const modalContent = useStnStore(state => state.ModalContent);
-  console.log(modalContent);
   return (
     modalContent && <Modal
       show={modalContent.isOpen}
       onHide={modalContent.onCancel}
-      size="lg"
+      size={modalContent.size ?? "xl"}
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      backdrop="static"
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">

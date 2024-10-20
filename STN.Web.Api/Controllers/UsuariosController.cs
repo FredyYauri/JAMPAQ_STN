@@ -20,17 +20,17 @@ namespace STN.Web.Api.Controllers
         private readonly IConfiguration _configuration;
         public UsuariosController(ApplicationDbContext context, IConfiguration configuration)
         {
-            _bsUsuario = new BSUsuario(context);
+            _bsUsuario = new BSUsuario(context, configuration);
             _configuration = configuration;
         }
 
-        [HttpGet("ObtenerResultado")]
-        public IActionResult ObtenerResultado([FromQuery] RequestUsuario request)
+        [HttpGet("ValidarUsuario")]
+        public IActionResult ValidarUsuario([FromQuery] RequestUsuario request)
         {
             Helper helper = new Helper();
             try
             {
-                var resultado = _bsUsuario.ObtenerResultado(request.usuario, request.clave, request.compania);
+                var resultado = _bsUsuario.ValidarUsuario(request.usuario, request.clave, request.compania);
                 ResponseUsuario response = new ResponseUsuario();
                 if (resultado.Rows.Count == 0)
                 { 
@@ -63,7 +63,7 @@ namespace STN.Web.Api.Controllers
             Helper helper = new Helper();
             try
             {
-                var resultado = _bsUsuario.ObtenerPerfil(request.idUsuario);
+                var resultado = _bsUsuario.ObtenerPerfil(request.idUsuario, request.IdCompania);
                 ResponsePerfil response = new ResponsePerfil();
                 response.status = 0;
                 response.data = helper.ConvertDataTableToJson(resultado);

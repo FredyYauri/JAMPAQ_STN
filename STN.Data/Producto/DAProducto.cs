@@ -16,13 +16,43 @@ namespace STN.Data.Producto
             this._context = context;
         }
 
-        public DataTable fn_ObtenerProductos(string v)
+        public int fn_EliminarProducto(string storedProcedure, int iDProducto, int iDCompania)
         {
             DataTable dtResultado = new DataTable();
             try
             {
                 SqlHelper helper = new SqlHelper(_context);
-                dtResultado = helper.fn_ObtenerResultado(v);
+                dtResultado = helper.fn_ObtenerResultado(storedProcedure, iDCompania, iDProducto);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Convert.ToInt32(dtResultado.Rows[0][0]);
+        }
+
+        public DataTable fn_ObtenerProducto(string storedProcedure, int iDProducto, int iDCompania)
+        {
+            DataTable dtResultado = new DataTable();
+            try
+            {
+                SqlHelper helper = new SqlHelper(_context);
+                dtResultado = helper.fn_ObtenerResultado(storedProcedure, iDProducto, iDCompania);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dtResultado;
+        }
+
+        public DataTable fn_ObtenerProductos(string v, int iDCompania)
+        {
+            DataTable dtResultado = new DataTable();
+            try
+            {
+                SqlHelper helper = new SqlHelper(_context);
+                dtResultado = helper.fn_ObtenerResultado(v, iDCompania);
             }
             catch (Exception ex) {
                 throw ex;

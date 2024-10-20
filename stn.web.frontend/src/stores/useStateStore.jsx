@@ -40,10 +40,21 @@ export const useStnStore = create((set) => ({
         isOpen: false,
         title: '',
         body: null,
+        size: 'md',
         labelClose: 'Cerrar',
         labelAction: 'Aceptar',
         onCancel: () => { },
         onAction: () => { },
     },
     setModalContent: (content) => set({ ModalContent: content }),
+
+    showModalError: (message) => set({ ModalContent: { 
+        isOpen: true, 
+        title: 'Mensaje De Error', 
+        body: message, 
+        size: 'sm', 
+        labelClose: 'Cerrar', 
+        onCancel: () => {
+            set({ ModalContent: { isOpen: false } })
+         } } }),
 }))

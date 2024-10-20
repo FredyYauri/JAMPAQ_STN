@@ -18,6 +18,7 @@
     public class RequestPerfil
     {
         public String idUsuario { get; set; }
+        public int IdCompania { get; set; }
     }
 
     public class ResponsePerfil
