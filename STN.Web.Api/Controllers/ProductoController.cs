@@ -6,6 +6,7 @@ using STN.Bussiness.Seguridad;
 using STN.Web.Api.Entities;
 using STN.Web.Api.Utils;
 using System.Data;
+using STN.Entitie.Producto;
 
 namespace STN.Web.Api.Controllers
 {
@@ -93,6 +94,60 @@ namespace STN.Web.Api.Controllers
                     response.status = 1;
                     response.mesage = "No se pudo eliminar el producto";
                     response.data = false;
+                }
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        [HttpPost("RegistrarProducto")]        
+        public IActionResult Create([FromBody] DTOProducto obj)
+        {
+            Helper helper = new Helper();
+            try
+            {
+                var resultado = _bsProducto.CrearProducto(obj);
+                ResponseCreateProducto response = new ResponseCreateProducto();
+
+                if (resultado == 1)
+                {
+                    response.status = 0;
+                    response.mesage = "Producto registrado correctamente";
+                }
+                else
+                {
+                    response.status = 1;
+                    response.mesage = "No se pudo registrar el producto";
+                }
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        [HttpPut("ActualizarProducto")]
+        public IActionResult Update([FromBody] DTOProducto obj)
+        {
+            Helper helper = new Helper();
+            try
+            {
+                var resultado = _bsProducto.ActualizarProducto(obj);
+                ResponseCreateProducto response = new ResponseCreateProducto();
+
+                if (resultado == 1)
+                {
+                    response.status = 0;
+                    response.mesage = "Producto actualizado correctamente";
+                    response.result = true;
+                }
+                else
+                {
+                    response.status = 1;
+                    response.mesage = "No se pudo actualizar el producto";
+                    response.result = false;
                 }
                 return Ok(response);
             }

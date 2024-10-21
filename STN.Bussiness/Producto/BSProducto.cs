@@ -1,11 +1,14 @@
 ﻿using Microsoft.Extensions.Configuration;
 using STN.Data.Producto;
+using STN.Entitie.Producto;
+using STN.Entitie;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using STN.Entitie.Response;
 
 namespace STN.Bussiness.Producto
 {
@@ -41,6 +44,20 @@ namespace STN.Bussiness.Producto
             var daProducto = new DAProducto(_context);
             string storedProcedure = _configuration["StoredProcedures:Productos"];
             return daProducto.fn_ObtenerProductos(storedProcedure, iDCompania);
+        }
+        public int CrearProducto(DTOProducto obj)
+        {
+            var daProducto = new DAProducto(_context);
+            string storedProcedure = _configuration["StoredProcedures:RegistrarProducto"];
+            int resultado = daProducto.fn_CrearProducto(storedProcedure, obj);
+            return resultado;
+        }
+        public int ActualizarProducto(DTOProducto obj)
+        {
+            var daProducto = new DAProducto(_context);
+            string storedProcedure = _configuration["StoredProcedures:ActualizarProducto"];
+            int resultado = daProducto.fn_ActualizarProducto(storedProcedure, obj);
+            return resultado;
         }
     }
 }

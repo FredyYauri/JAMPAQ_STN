@@ -22,4 +22,10 @@
         public String mesage { get; set; } = "";
         public bool data { get; set; }
     }
+    public class ResponseCreateProducto
+    {
+        public int status { get; set; }
+        public String mesage { get; set; } = "";
+        public bool result { get; set; }
+    }
 }
