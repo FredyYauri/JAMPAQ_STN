@@ -6,7 +6,7 @@ import { useStnStore } from "../../../stores/useStateStore";
 
 // Modal que será utilizado para confirmar acciones o errores
 export const ModalConfirm = () => {
-    const { closeModalAndReset } = useStnStore();
+    const { closeModalConfirm } = useStnStore();
     const modalStore = useStnStore((state) => state.modalConfirm);
     const [show, setShow] = useState(false);
 
@@ -18,7 +18,7 @@ export const ModalConfirm = () => {
         if (modalStore.onCancel) {
             modalStore.onCancel();
         }
-        closeModalAndReset()
+        closeModalConfirm()
         setShow(false);
     };
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { EliminarProducto, ObtenerProducto } from '../../services/Services';
+import { EliminarProducto, ObtenerProductos } from '../../services/Services';
 import ToDoList from '../../components/common/ToDoList';
 import DetailProduct from './DetailProduct';
 import { useStnStore } from '../../stores/useStateStore';
@@ -30,7 +30,7 @@ const ListProductComponent = () => {
     }, [])
 
     const listarProductos = () => {
-        ObtenerProducto().then((data) => {
+        ObtenerProductos().then((data) => {
             setFetchData(data.data);
         });
     }
@@ -48,8 +48,22 @@ const ListProductComponent = () => {
     ];
 
     const updateAction = (id) => {
-        //TODO: Implementar la acción de actualizar
-        console.log('Update Action', id);
+        setModalContent({
+            isOpen: true,
+            title: 'Editar Producto',
+            body: (<NewProduct
+                ref={formRef}
+                idProduct = {id}
+            />),
+            labelClose: 'Cerrar',
+            onCancel: () => setModalContent({ isOpen: false }),
+            labelAction: 'Guardar',
+            onAction: () => {
+                if (formRef.current) {
+                    formRef.current.saveProduct();
+                }
+            },
+        })
     }
     const deleteAction = (id) => {
         setModalContent({

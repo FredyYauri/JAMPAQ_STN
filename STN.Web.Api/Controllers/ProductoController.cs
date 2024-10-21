@@ -50,7 +50,7 @@ namespace STN.Web.Api.Controllers
 
         [HttpGet("ObtenerProducto")]
         [Authorize]
-        public IActionResult About([FromQuery] RequestProductDetail request)
+        public IActionResult ObtenerProducto([FromQuery] RequestProductDetail request)
         {
             Helper helper = new Helper();
             try

@@ -25,7 +25,11 @@ export const ObtenerMarca = () => fetchData(`${uri}Maestro/ObtenerMarca?IDCompan
 });
 
 
-export const ObtenerProducto = () => fetchData(`${uri}Producto/ObtenerProductos?IDCompania=${IDCompania}`, {
+export const ObtenerProductos = () => fetchData(`${uri}Producto/ObtenerProductos?IDCompania=${IDCompania}`, {
+    method: 'GET',
+});
+
+export const ObtenerProducto = (IDProducto) => fetchData(`${uri}Producto/ObtenerProducto?IDCompania=${IDCompania}&IDProducto=${IDProducto}`, {
     method: 'GET',
 });
 
@@ -34,6 +38,11 @@ export const EliminarProducto = (IDProducto) => fetchData(`${uri}Producto/Elimin
 });
 
 export const GuardarProducto = (producto) => fetchData(`${uri}Usuarios/RegistrarProducto`, {
+    method: 'POST',
+    body: JSON.stringify(producto)
+});
+
+export const EditarProducto = (producto) => fetchData(`${uri}Usuarios/EditarProducto`, {
     method: 'POST',
     body: JSON.stringify(producto)
 });

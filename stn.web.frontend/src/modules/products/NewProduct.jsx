@@ -1,10 +1,10 @@
 import React, { useImperativeHandle, forwardRef, useState, useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap';
 import Form from "react-bootstrap/Form";
-import { GuardarProducto, ObtenerClaseProducto, ObtenerMarca, ObtenerUnidadMedida } from '../../services/Services';
+import { GuardarProducto, ObtenerClaseProducto, ObtenerMarca, ObtenerProducto, ObtenerUnidadMedida } from '../../services/Services';
 import { useStnStore } from '../../stores/useStateStore';
 
-const NewProduct = forwardRef((props, ref) => {
+const NewProduct = forwardRef(({ idProduct }, ref) => {
     const [unidadMedidaList, setUnidadMedidaList] = useState([]);
     const [listTipo, setListTipo] = useState([]);
     const [listMarca, setListMarca] = useState([]);
@@ -16,7 +16,9 @@ const NewProduct = forwardRef((props, ref) => {
     const [inventario, setInventario] = useState(false);
     const [compra, setCompra] = useState(false);
     const [errors, setErrors] = useState({});
-    const { setModalConfirm } = useStnStore;
+    const [codigo, setCodigo] = useState('');
+    const [estado, setEstado] = useState(true);
+    const { setModalConfirm, closeModalContent } = useStnStore();
 
 
     const [validated, setValidated] = useState(false);
@@ -31,7 +33,24 @@ const NewProduct = forwardRef((props, ref) => {
         ObtenerMarca().then((data) => {
             setListMarca(data.data);
         });
-    }, [])
+        // Inicializar los estados con los datos del producto a editar si están disponibles
+        if (idProduct) {
+            ObtenerProducto(idProduct).then((data) => {
+                if(data && data.status === 0){
+                const product = data.data[0];
+                setDescription(product.Descripcion || '');
+                setCodigo(product.Codigo || '');
+                setUnidadMedida(product.IDUnidadMedida || '');
+                setMarca(product.IdMarca || '');
+                setTipo(product.IdTipo || '');
+                setStockMinimo(product.StockMinimo || 0);
+                setEstado(product.Estado == 0 ? false : true);
+                setInventario(product.ArticuloInventario || false);
+                setCompra(product.ArticuloCompra || false);
+                }
+            });
+        }
+    }, [idProduct])
 
     // Exponer el método saveProduct al componente padre
     useImperativeHandle(ref, () => ({
@@ -51,19 +70,18 @@ const NewProduct = forwardRef((props, ref) => {
                     "ArticuloCompra": compra,
                     "Usuario": idUsuario
                 }
-                console.log('Producto guardado desde el hijo:', product);
-                
                 GuardarProducto(product).then((data) => {
+                    closeModalContent();
                     console.log('Producto guardado:', data);
                     const title = '';
                     const body = '';
                     if (data && data.status === 1) {
                         title = 'Producto Guardado';
                         body = 'Producto Guardado Correctamente';
-                    }else{
+                    } else {
                         title = 'Error';
                         body = 'Error al guardar el producto';
-                    }                    
+                    }
                     setModalConfirm({
                         isOpen: true,
                         title: title,
@@ -71,9 +89,81 @@ const NewProduct = forwardRef((props, ref) => {
                         labelClose: 'Cerrar',
                         onCancel: () => setModalConfirm({ isOpen: false }),
                     })
-                });
+                })
+                    .catch((e) => {
+                        closeModalContent();
+                        setDescription('');
+                        setUnidadMedida('');
+                        setMarca('');
+                        setTipo('');
+                        setStockMinimo(0);
+                        setInventario(false);
+                        setCompra(false);
+                        setModalConfirm({
+                            isOpen: true,
+                            title: "Error",
+                            body: "Error al guardar el producto",
+                            labelClose: 'Cerrar',
+                            onCancel: () => setModalConfirm({ isOpen: false }),
+                        })
+                    });
             }
-            // Aquí puedes agregar la lógica para guardar el producto
+        },
+        editProduct() {
+            const user = JSON.parse(sessionStorage.getItem("user"));
+            const idUsuario = user.IDUsuario;
+            const isValid = validateAllFields();
+            if (isValid) {
+                const product = {
+                    "IdCompania": 1,
+                    "DescripcionProducto": description,
+                    "IdUnidadMedida": unidadMedida,
+                    "IdMarca": marca,
+                    "IdTipo": tipo,
+                    "StockMinimo": stockMinimo,
+                    "ArticuloInventario": inventario,
+                    "ArticuloCompra": compra,
+                    "Usuario": idUsuario,
+                    "estado": estado,
+                }
+                EditarProducto(product).then((data) => {
+                    closeModalContent();
+                    console.log('Producto guardado:', data);
+                    const title = '';
+                    const body = '';
+                    if (data && data.status === 1) {
+                        title = 'Producto Guardado';
+                        body = 'Producto Guardado Correctamente';
+                    } else {
+                        title = 'Error';
+                        body = 'Error al guardar el producto';
+                    }
+                    setModalConfirm({
+                        isOpen: true,
+                        title: title,
+                        body: body,
+                        labelClose: 'Cerrar',
+                        onCancel: () => setModalConfirm({ isOpen: false }),
+                    })
+                })
+                    .catch((e) => {
+                        closeModalContent();
+                        setDescription('');
+                        setUnidadMedida('');
+                        setMarca('');
+                        setTipo('');
+                        setStockMinimo(0);
+                        setInventario(false);
+                        setCompra(false);
+                        setModalConfirm({
+                            isOpen: true,
+                            title: "Error",
+                            body: "Error al guardar el producto",
+                            labelClose: 'Cerrar',
+                            onCancel: () => setModalConfirm({ isOpen: false }),
+                        })
+                    });
+            }
         }
     }));
 
@@ -112,6 +202,22 @@ const NewProduct = forwardRef((props, ref) => {
     return (
         <Form >
             <Row>
+                {idProduct && <Col lg={6}>
+                    <Form.Group className="mb-4">
+                        <label className="label text-secondary">Código:</label>
+                        <Form.Group className="position-relative">
+                            <Form.Control
+                                disabled
+                                required
+                                type="text"
+                                className="text-dark ps-5 h-55"
+                                placeholder="Ingresar Descripción"
+                                value={codigo}
+                            />
+                            <i className="ri-text-snippet position-absolute top-50 start-0 translate-middle-y fs-20 ps-20"></i>
+                        </Form.Group>
+                    </Form.Group>
+                </Col>}
                 <Col lg={6}>
                     <Form.Group className="mb-4">
                         <label className="label text-secondary">Descripción</label>
@@ -231,7 +337,18 @@ const NewProduct = forwardRef((props, ref) => {
                         </Form.Group>
                     </Form.Group>
                 </Col>
-
+                {idProduct && <Col lg={6}>
+                    <Form.Group className="mb-4">
+                        <Form.Group className="position-relative">
+                            <Form.Check
+                                type="switch"
+                                label={estado? 'Activo' : 'Inactivo'}
+                                checked={estado}
+                                onChange={(e) => setEstado(!estado)}
+                            />
+                        </Form.Group>
+                    </Form.Group>
+                </Col>}
                 <Col lg={6}>
                     <Form.Group className="mb-2 mt-1">
                         <Form.Group className="position-relative">
@@ -257,6 +374,8 @@ const NewProduct = forwardRef((props, ref) => {
                         </Form.Group>
                     </Form.Group>
                 </Col>
+
+
             </Row>
         </Form>
     )

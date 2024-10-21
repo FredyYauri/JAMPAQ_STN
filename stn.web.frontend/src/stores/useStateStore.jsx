@@ -9,7 +9,7 @@ export const useStnStore = create((set) => ({
         onCancel: () => { }
     },
     setModalConfirm: (modal) => set(state => ({ modalConfirm: { ...state.modalConfirm, ...modal } })),
-    closeModalAndReset: () => set(() => ({
+    closeModalConfirm: () => set(() => ({
         modalConfirm: {
             isOpen: false,
             title: '',
@@ -29,10 +29,11 @@ export const useStnStore = create((set) => ({
         }
         set({ token: newToken });
     },
-    
+
     //loadding
     loading: false,
     setLoading: (load) => set(state => ({ loading: load })),
+
 
     numItemsTable: 5,
 
@@ -48,13 +49,28 @@ export const useStnStore = create((set) => ({
     },
     setModalContent: (content) => set({ ModalContent: content }),
 
-    showModalError: (message) => set({ ModalContent: { 
-        isOpen: true, 
-        title: 'Mensaje De Error', 
-        body: message, 
-        size: 'sm', 
-        labelClose: 'Cerrar', 
-        onCancel: () => {
-            set({ ModalContent: { isOpen: false } })
-         } } }),
+    showModalError: (message) => set({
+        ModalContent: {
+            isOpen: true,
+            title: 'Mensaje De Error',
+            body: message,
+            size: 'sm',
+            labelClose: 'Cerrar',
+            onCancel: () => {
+                set({ ModalContent: { isOpen: false } })
+            }
+        }
+    }),
+    closeModalContent: () => set(() => ({
+        ModalContent: {
+            isOpen: false,
+            title: '',
+            body: null,
+            size: 'md',
+            labelClose: 'Cerrar',
+            labelAction: 'Aceptar',
+            onCancel: () => { },
+            onAction: () => { }
+        }
+    })),
 }))
