@@ -21,43 +21,40 @@ namespace STN.Bussiness.Producto
             _context = context;
             _configuration = configuration;
         }
-
-        public bool EliminarProducto(int iDProducto, int iDCompania)
-        {
-            var daProducto = new DAProducto(_context);
-            bool resultadoBool = false;
-            string storedProcedure = _configuration["StoredProcedures:EliminarProducto"];
-            int resultado = daProducto.fn_EliminarProducto(storedProcedure, iDProducto, iDCompania);
-            if(resultado == 0) resultadoBool = true;        
-            return resultadoBool;
-        }
-
-        public DataTable ObtenerProducto(int iDProducto, int iDCompania)
-        {
-            var daProducto = new DAProducto(_context);
-            string storedProcedure = _configuration["StoredProcedures:Producto"];
-            return daProducto.fn_ObtenerProducto(storedProcedure, iDProducto, iDCompania);
-        }
-
-        public DataTable ObtenerProductos(int iDCompania)
+        public List<DTOProductoGet> ObtenerProductos(DTOProducto obj)
         {
             var daProducto = new DAProducto(_context);
             string storedProcedure = _configuration["StoredProcedures:Productos"];
-            return daProducto.fn_ObtenerProductos(storedProcedure, iDCompania);
+            return daProducto.fn_ObtenerProductos(storedProcedure, obj);
         }
-        public int CrearProducto(DTOProducto obj)
+        public List<DTOProductoRegister> ObtenerProducto(DTOProducto obj)
+        {
+            var daProducto = new DAProducto(_context);
+            string storedProcedure = _configuration["StoredProcedures:Producto"];
+            return daProducto.fn_ObtenerProducto(storedProcedure, obj);
+        }
+        public int CrearProducto(DTOProductoCreate obj)
         {
             var daProducto = new DAProducto(_context);
             string storedProcedure = _configuration["StoredProcedures:RegistrarProducto"];
             int resultado = daProducto.fn_CrearProducto(storedProcedure, obj);
             return resultado;
         }
-        public int ActualizarProducto(DTOProducto obj)
+        public int ActualizarProducto(DTOProductoUpdate obj)
         {
             var daProducto = new DAProducto(_context);
             string storedProcedure = _configuration["StoredProcedures:ActualizarProducto"];
             int resultado = daProducto.fn_ActualizarProducto(storedProcedure, obj);
             return resultado;
+        }
+        public bool EliminarProducto(DTOProducto obj)
+        {
+            var daProducto = new DAProducto(_context);
+            bool resultadoBool = false;
+            string storedProcedure = _configuration["StoredProcedures:EliminarProducto"];
+            int resultado = daProducto.fn_EliminarProducto(storedProcedure, obj);
+            if (resultado == 1) resultadoBool = true;
+            return resultadoBool;
         }
     }
 }
