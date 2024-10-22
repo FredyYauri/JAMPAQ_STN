@@ -37,12 +37,12 @@ export const EliminarProducto = (IDProducto) => fetchData(`${uri}Producto/Elimin
     method: 'DELETE',
 });
 
-export const GuardarProducto = (producto) => fetchData(`${uri}Usuarios/RegistrarProducto`, {
+export const GuardarProducto = (producto) => fetchData(`${uri}Producto/RegistrarProducto`, {
     method: 'POST',
     body: JSON.stringify(producto)
 });
 
-export const EditarProducto = (producto) => fetchData(`${uri}Usuarios/EditarProducto`, {
-    method: 'POST',
+export const EditarProducto = (producto) => fetchData(`${uri}Producto/ActualizarProducto`, {
+    method: 'PUT',
     body: JSON.stringify(producto)
 });

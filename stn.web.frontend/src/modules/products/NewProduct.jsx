@@ -1,7 +1,7 @@
 import React, { useImperativeHandle, forwardRef, useState, useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap';
 import Form from "react-bootstrap/Form";
-import { GuardarProducto, ObtenerClaseProducto, ObtenerMarca, ObtenerProducto, ObtenerUnidadMedida } from '../../services/Services';
+import { EditarProducto, GuardarProducto, ObtenerClaseProducto, ObtenerMarca, ObtenerProducto, ObtenerUnidadMedida } from '../../services/Services';
 import { useStnStore } from '../../stores/useStateStore';
 
 const NewProduct = forwardRef(({ idProduct }, ref) => {
@@ -35,18 +35,20 @@ const NewProduct = forwardRef(({ idProduct }, ref) => {
         });
         // Inicializar los estados con los datos del producto a editar si están disponibles
         if (idProduct) {
+            console.log('idProduct:', idProduct);
             ObtenerProducto(idProduct).then((data) => {
-                if(data && data.status === 0){
-                const product = data.data[0];
-                setDescription(product.Descripcion || '');
-                setCodigo(product.Codigo || '');
-                setUnidadMedida(product.IDUnidadMedida || '');
-                setMarca(product.IdMarca || '');
-                setTipo(product.IdTipo || '');
-                setStockMinimo(product.StockMinimo || 0);
-                setEstado(product.Estado == 0 ? false : true);
-                setInventario(product.ArticuloInventario || false);
-                setCompra(product.ArticuloCompra || false);
+                console.log('Producto:', data);
+                if (data && data.status === 0) {
+                    const product = data.data[0];
+                    setDescription(product.Descripcion || '');
+                    setCodigo(product.Codigo || '');
+                    setUnidadMedida(product.IDUnidadMedida || '');
+                    setMarca(product.IdMarca || '');
+                    setTipo(product.IdTipo || '');
+                    setStockMinimo(product.StockMinimo || 0);
+                    setEstado(product.Estado == 0 ? false : true);
+                    setInventario(product.ArticuloInventario || false);
+                    setCompra(product.ArticuloCompra || false);
                 }
             });
         }
@@ -54,7 +56,7 @@ const NewProduct = forwardRef(({ idProduct }, ref) => {
 
     // Exponer el método saveProduct al componente padre
     useImperativeHandle(ref, () => ({
-        saveProduct() {
+        saveProduct(listarProducts) {
             const user = JSON.parse(sessionStorage.getItem("user"));
             const idUsuario = user.IDUsuario;
             const isValid = validateAllFields();
@@ -65,30 +67,26 @@ const NewProduct = forwardRef(({ idProduct }, ref) => {
                     "IdUnidadMedida": unidadMedida,
                     "IdMarca": marca,
                     "IdTipo": tipo,
-                    "StockMinimo": stockMinimo,
+                    "StockMinimo": stockMinimo ?? 0,
                     "ArticuloInventario": inventario,
                     "ArticuloCompra": compra,
                     "Usuario": idUsuario
                 }
+                console.log('input guardado:', product);
                 GuardarProducto(product).then((data) => {
-                    closeModalContent();
                     console.log('Producto guardado:', data);
-                    const title = '';
-                    const body = '';
-                    if (data && data.status === 1) {
-                        title = 'Producto Guardado';
-                        body = 'Producto Guardado Correctamente';
-                    } else {
-                        title = 'Error';
-                        body = 'Error al guardar el producto';
+                    if (data && data.status !== 0) {
+                        setModalConfirm({
+                            isOpen: true,
+                            title: 'Error',
+                            body: 'Error al guardar el producto',
+                            labelClose: 'Cerrar',
+                            onCancel: () => setModalConfirm({ isOpen: false }),
+                        })
                     }
-                    setModalConfirm({
-                        isOpen: true,
-                        title: title,
-                        body: body,
-                        labelClose: 'Cerrar',
-                        onCancel: () => setModalConfirm({ isOpen: false }),
-                    })
+                    closeModalContent();
+                    listarProducts();
+
                 })
                     .catch((e) => {
                         closeModalContent();
@@ -109,44 +107,40 @@ const NewProduct = forwardRef(({ idProduct }, ref) => {
                     });
             }
         },
-        editProduct() {
+        editProduct(listarProducts) {
             const user = JSON.parse(sessionStorage.getItem("user"));
             const idUsuario = user.IDUsuario;
             const isValid = validateAllFields();
             if (isValid) {
                 const product = {
+                    "IdProducto": idProduct,
                     "IdCompania": 1,
                     "DescripcionProducto": description,
                     "IdUnidadMedida": unidadMedida,
                     "IdMarca": marca,
                     "IdTipo": tipo,
-                    "StockMinimo": stockMinimo,
+                    "StockMinimo": stockMinimo ?? 0,
                     "ArticuloInventario": inventario,
                     "ArticuloCompra": compra,
                     "Usuario": idUsuario,
                     "estado": estado,
                 }
                 EditarProducto(product).then((data) => {
-                    closeModalContent();
-                    console.log('Producto guardado:', data);
-                    const title = '';
-                    const body = '';
-                    if (data && data.status === 1) {
-                        title = 'Producto Guardado';
-                        body = 'Producto Guardado Correctamente';
-                    } else {
-                        title = 'Error';
-                        body = 'Error al guardar el producto';
+                    console.log('Producto Editar:', data.status);
+                    if (data && data.status !== 0) {
+                        setModalConfirm({
+                            isOpen: true,
+                            title: 'Error',
+                            body: 'Error al guardar el producto',
+                            labelClose: 'Cerrar',
+                            onCancel: () => setModalConfirm({ isOpen: false }),
+                        })
                     }
-                    setModalConfirm({
-                        isOpen: true,
-                        title: title,
-                        body: body,
-                        labelClose: 'Cerrar',
-                        onCancel: () => setModalConfirm({ isOpen: false }),
-                    })
+                    closeModalContent();
+                    listarProducts();
                 })
                     .catch((e) => {
+                        console.log('Error:', e);
                         closeModalContent();
                         setDescription('');
                         setUnidadMedida('');
@@ -184,8 +178,7 @@ const NewProduct = forwardRef(({ idProduct }, ref) => {
         const fields = {
             description,
             unidadMedida,
-            tipo,
-            stockMinimo
+            tipo
         };
 
         let valid = true;
@@ -265,31 +258,6 @@ const NewProduct = forwardRef(({ idProduct }, ref) => {
                         </Form.Group>
                     </Form.Group>
                 </Col>
-
-                <Col lg={6}>
-                    <Form.Group className="mb-4">
-                        <label className="label text-secondary">Marca</label>
-                        <Form.Group className="position-relative">
-                            <Form.Select
-                                className="form-control ps-5 h-55"
-                                aria-label="Default select example"
-                                value={marca}
-                                onChange={(e) => {
-                                    setMarca(e.target.value);
-                                }}
-                            >
-                                <option value="-1" >Seleccione Marca</option>
-                                {listMarca && listMarca.map((item, index) => (
-                                    <option key={index} value={item.Id} className="text-dark">
-                                        {item.Descripcion}
-                                    </option>
-                                ))}
-                            </Form.Select>
-                            <i className="ri-dropdown-list position-absolute top-50 start-0 translate-middle-y fs-20 ps-20"></i>
-                        </Form.Group>
-                    </Form.Group>
-                </Col>
-
                 <Col lg={6}>
                     <Form.Group className="mb-4">
                         <label className="label text-secondary">Tipo</label>
@@ -319,6 +287,31 @@ const NewProduct = forwardRef(({ idProduct }, ref) => {
 
                 <Col lg={6}>
                     <Form.Group className="mb-4">
+                        <label className="label text-secondary">Marca</label>
+                        <Form.Group className="position-relative">
+                            <Form.Select
+                                className="form-control ps-5 h-55"
+                                aria-label="Default select example"
+                                value={marca}
+                                onChange={(e) => {
+                                    setMarca(e.target.value);
+                                }}
+                            >
+                                <option value="-1" >Seleccione Marca</option>
+                                {listMarca && listMarca.map((item, index) => (
+                                    <option key={index} value={item.Id} className="text-dark">
+                                        {item.Descripcion}
+                                    </option>
+                                ))}
+                            </Form.Select>
+                            <i className="ri-dropdown-list position-absolute top-50 start-0 translate-middle-y fs-20 ps-20"></i>
+                        </Form.Group>
+                    </Form.Group>
+                </Col>
+
+
+                <Col lg={6}>
+                    <Form.Group className="mb-4">
                         <label className="label text-secondary">Stock Mínimo</label>
                         <Form.Group className="position-relative">
                             <Form.Control
@@ -342,7 +335,7 @@ const NewProduct = forwardRef(({ idProduct }, ref) => {
                         <Form.Group className="position-relative">
                             <Form.Check
                                 type="switch"
-                                label={estado? 'Activo' : 'Inactivo'}
+                                label={estado ? 'Activo' : 'Inactivo'}
                                 checked={estado}
                                 onChange={(e) => setEstado(!estado)}
                             />

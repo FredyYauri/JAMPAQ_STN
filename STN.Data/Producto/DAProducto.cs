@@ -43,7 +43,7 @@ namespace STN.Data.Producto
             try
             {
                 SqlHelper helper = new SqlHelper(_context);
-                dtResultado = helper.fn_ObtenerResultado(storedProcedure, iDProducto, iDCompania);
+                dtResultado = helper.fn_ObtenerResultado(storedProcedure, iDCompania, iDProducto);
             }
             catch (Exception ex)
             {
@@ -76,7 +76,7 @@ namespace STN.Data.Producto
                 oSqlConnection.Open();                
                 SqlCommand cm = new SqlCommand(store, oSqlConnection);
                 cm.CommandType = CommandType.StoredProcedure;
-                cm.Parameters.AddWithValue("@IdCompania", obj.IdCompañia);
+                cm.Parameters.AddWithValue("@IdCompania", obj.IdCompania);
                 cm.Parameters.AddWithValue("@DescripcionProducto", obj.DescripcionProducto);
                 cm.Parameters.AddWithValue("@IdTipo", obj.IdTipo);
                 cm.Parameters.AddWithValue("@IdUnidadMedida", obj.IdUnidadMedida);
@@ -103,7 +103,7 @@ namespace STN.Data.Producto
                 SqlCommand cm = new SqlCommand(store, oSqlConnection);
                 cm.CommandType = CommandType.StoredProcedure;
                 cm.Parameters.AddWithValue("@IdProducto", obj.IdProducto);
-                cm.Parameters.AddWithValue("@IdCompania", obj.IdCompañia);
+                cm.Parameters.AddWithValue("@IdCompania", obj.IdCompania);
                 cm.Parameters.AddWithValue("@DescripcionProducto", obj.DescripcionProducto);
                 cm.Parameters.AddWithValue("@IdTipo", obj.IdTipo);
                 cm.Parameters.AddWithValue("@IdUnidadMedida", obj.IdUnidadMedida);

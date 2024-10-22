@@ -9,7 +9,7 @@ namespace STN.Entitie.Producto
     public class DTOProducto
     {
         public int IdProducto { get; set; }
-        public int IdCompañia { get; set; }
+        public int IdCompania { get; set; }
         public string DescripcionProducto { get; set; }
         public int IdTipo { get; set; }
         public int IdUnidadMedida { get; set; }

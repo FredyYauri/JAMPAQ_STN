@@ -111,7 +111,7 @@ namespace STN.Web.Api.Controllers
                 var resultado = _bsProducto.CrearProducto(obj);
                 ResponseCreateProducto response = new ResponseCreateProducto();
 
-                if (resultado == 1)
+                if (resultado > 0)
                 {
                     response.status = 0;
                     response.mesage = "Producto registrado correctamente";
@@ -137,7 +137,7 @@ namespace STN.Web.Api.Controllers
                 var resultado = _bsProducto.ActualizarProducto(obj);
                 ResponseCreateProducto response = new ResponseCreateProducto();
 
-                if (resultado == 1)
+                if (resultado > 0)
                 {
                     response.status = 0;
                     response.mesage = "Producto actualizado correctamente";

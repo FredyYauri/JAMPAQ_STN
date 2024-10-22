@@ -30,6 +30,7 @@ const ListProductComponent = () => {
     }, [])
 
     const listarProductos = () => {
+        console.log("listarProductos")
         ObtenerProductos().then((data) => {
             setFetchData(data.data);
         });
@@ -60,7 +61,7 @@ const ListProductComponent = () => {
             labelAction: 'Guardar',
             onAction: () => {
                 if (formRef.current) {
-                    formRef.current.saveProduct();
+                    formRef.current.editProduct(listarProductos);
                 }
             },
         })
@@ -90,7 +91,8 @@ const ListProductComponent = () => {
         setModalContent({
             isOpen: true,
             title: 'Detail Product',
-            body: <DetailProduct />,
+            size: 'md',
+            body: <DetailProduct IDProducto={id}  />,
             labelClose: 'Cerrar',
             onCancel: () => setModalContent({ isOpen: false }),
             labelAction: 'Aceptar',
@@ -113,9 +115,9 @@ const ListProductComponent = () => {
             labelAction: 'Guardar',
             onAction: () => {
                 if (formRef.current) {
-                    formRef.current.saveProduct();
+                    formRef.current.saveProduct(listarProductos);
+                    
                 }
-                // setModalContent({ isOpen: false });
             },
         })
     }

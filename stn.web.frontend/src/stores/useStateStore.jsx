@@ -35,7 +35,7 @@ export const useStnStore = create((set) => ({
     setLoading: (load) => set(state => ({ loading: load })),
 
 
-    numItemsTable: 5,
+    numItemsTable: 10,
 
     ModalContent: {
         isOpen: false,
