@@ -31,20 +31,15 @@ const NewProduct = forwardRef(({ idProduct }, ref) => {
                     ObtenerClaseProducto(),
                     ObtenerMarca()
                 ]);
-
-                console.log('marcaData:', marcaData.data);
+                
                 setUnidadMedidaList(unidadMedidaData.data);
                 setListTipo(claseProductoData.data);
                 setListMarca(marcaData.data);
 
-                // Inicializar los estados con los datos del producto a editar si están disponibles
                 if (idProduct) {
-                    console.log('idProduct:', idProduct);
                     const productoData = await ObtenerProducto(idProduct);
                     if (productoData && productoData.status === 0) {
                         const product = productoData.data;
-                        console.log(productoData.data);
-                        console.log('idMarca:', product.idMarca);
                         setDescription(product.descripcion || '');
                         setCodigo(product.codigo || '');
                         setUnidadMedida(product.idUnidadMedida || '');
@@ -55,8 +50,8 @@ const NewProduct = forwardRef(({ idProduct }, ref) => {
                         setInventario(product.articuloInventario || false);
                         setCompra(product.articuloCompra || false);
                     }
-                    setLoadingDetail(false);
                 }
+                setLoadingDetail(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
                 setLoadingDetail(false);
