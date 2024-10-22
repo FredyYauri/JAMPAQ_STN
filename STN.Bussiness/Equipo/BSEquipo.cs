@@ -21,11 +21,40 @@ namespace STN.Bussiness.Equipo
             this.configuration = configuration;
         }
 
-        public List<DTOEquipo> ObtenerEquipos(int iDCompania)
+        public List<DTOEquipoGet> ObtenerEquipos(int iDCompania)
         {
             var daEquipo = new DAEquipo(context);
             string storedProcedure = configuration["StoredProcedures:Equipos"];
             return daEquipo.fn_ObtenerEquipos(storedProcedure, iDCompania);
+        }
+        public List<DTOEquipoRegister> ObtenerEquipo(DTOEquipo obj)
+        {
+            var daEquipo = new DAEquipo(context);
+            string storedProcedure = configuration["StoredProcedures:Equipo"];
+            return daEquipo.fn_ObtenerEquipo(storedProcedure, obj);
+        }
+        public int CrearEquipo(DTOEquipoCreate obj)
+        {
+            var daEquipo = new DAEquipo(context);
+            string storedProcedure = configuration["StoredProcedures:RegistrarEquipo"];
+            int resultado = daEquipo.fn_CrearEquipo(storedProcedure, obj);
+            return resultado;
+        }
+        public int ActualizarEquipo(DTOEquipoUpdate obj)
+        {
+            var daEquipo = new DAEquipo(context);
+            string storedProcedure = configuration["StoredProcedures:ActualizarEquipo"];
+            int resultado = daEquipo.fn_ActualizarEquipo(storedProcedure, obj);
+            return resultado;
+        }
+        public bool EliminarEquipo(DTOEquipo obj)
+        {
+            var daEquipo = new DAEquipo(context);
+            bool resultadoBool = false;
+            string storedProcedure = configuration["StoredProcedures:EliminarEquipo"];
+            int resultado = daEquipo.fn_EliminarEquipo(storedProcedure, obj);
+            if (resultado == 1) resultadoBool = true;
+            return resultadoBool;
         }
     }
 }
