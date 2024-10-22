@@ -70,7 +70,7 @@ const ListProductComponent = () => {
         setModalContent({
             isOpen: true,
             title: 'Eliminar Producto',
-            body: '¿Está seguro de eliminar el producto?',
+            body: `¿Está seguro de eliminar el producto con ID: ${id}?`,
             size: 'sm',
             labelClose: 'Cancelar',
             onCancel: () => setModalContent({ isOpen: false }),
