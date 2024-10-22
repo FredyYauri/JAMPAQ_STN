@@ -28,6 +28,7 @@ export const ListMachine = () => {
     const listarProductos = () => {
         console.log("listarProductos")
         ObtenerEquipos().then((data) => {
+            console.log('data:', data);
             setFetchData(data.data);
         });
     }

@@ -23,7 +23,7 @@ namespace STN.Web.Api.Entities
     {
         public int status { get; set; }
         public String mesage { get; set; } = "";
-        public List<DTOProductoRegister> data { get; set; }
+        public DTOProductoRegister data { get; set; }
     }
     public class ResponseDeleteProducto
     {

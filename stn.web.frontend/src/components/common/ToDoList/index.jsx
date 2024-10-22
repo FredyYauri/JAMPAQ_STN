@@ -87,7 +87,7 @@ const handleSearch = (searchTerm) => {
                               {options.detail && (
                                 <button
                                   className="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
-                                  onClick={() => options.detail.detailAction(itemData['Id'])}
+                                  onClick={() => options.detail.detailAction(itemData['id'])}
                                 >
                                   <MaterialSymbol
                                     icon="visibility"
@@ -99,7 +99,7 @@ const handleSearch = (searchTerm) => {
                               {options.update && (
                                 <button
                                   className="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
-                                  onClick={() => options.update.updateAction(itemData['Id'])}
+                                  onClick={() => options.update.updateAction(itemData['id'])}
                                 >
                                   <MaterialSymbol
                                     icon="edit"
@@ -111,7 +111,7 @@ const handleSearch = (searchTerm) => {
                               {options.delete && (
                                 <button
                                   className="ps-0 border-0 bg-transparent lh-1 position-relative top-2"
-                                  onClick={() => options.delete.deleteAction(itemData['Id'])}
+                                  onClick={() => options.delete.deleteAction(itemData['id'])}
                                 >
                                   <MaterialSymbol
                                     icon="delete"
