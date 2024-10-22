@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -22,51 +23,85 @@ namespace STN.Data.Producto
         {
             this._context = context;
         }
-        public int fn_EliminarProducto(string storedProcedure, int iDProducto, int iDCompania)
+        public List<DTOProductoGet> fn_ObtenerProductos(string store, DTOProducto obj)
         {
-            DataTable dtResultado = new DataTable();
+            List<DTOProductoGet> Lista = new List<DTOProductoGet>();
+            SqlConnection oSqlConnection = null;
             try
             {
-                SqlHelper helper = new SqlHelper(_context);
-                dtResultado = helper.fn_ObtenerResultado(storedProcedure, iDCompania, iDProducto);
+                oSqlConnection = new SqlConnection(_context.Database.GetConnectionString());
+                oSqlConnection.Open();
+                SqlCommand cm = new SqlCommand(store, oSqlConnection);
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.Parameters.AddWithValue("@IdCompania", obj.IdCompania);
+                SqlDataReader dr = cm.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        DTOProductoGet oProduct = new DTOProductoGet();
+                        oProduct.Id = Convert.ToInt32(dr["Id"]);
+                        oProduct.Descripcion = dr["Descripcion"].ToString() ?? "";
+                        oProduct.Codigo = dr["Codigo"].ToString() ?? "";
+                        oProduct.Tipo = dr["Tipo"].ToString() ?? "";
+                        oProduct.Unidad = dr["Unidad"].ToString() ?? "";
+                        oProduct.StockMinimo = Convert.ToDecimal(dr["StockMinimo"]);
+                        oProduct.StockActual = Convert.ToDecimal(dr["StockActual"]);
+                        oProduct.Reposicion = dr["Reposicion"].ToString() ?? "";
+                        oProduct.Estado = dr["Estado"].ToString() ?? "";
+                        Lista.Add(oProduct);
+                    }
+                }                
+            }
+            catch (Exception ex)
+            {
+                throw ex;               
+            }
+            return Lista;
+        }
+        public List<DTOProductoRegister> fn_ObtenerProducto(string store, DTOProducto obj)
+        {
+            List<DTOProductoRegister> Lista = new List<DTOProductoRegister>();
+            SqlConnection oSqlConnection = null;
+            try
+            {
+                oSqlConnection = new SqlConnection(_context.Database.GetConnectionString());
+                oSqlConnection.Open();
+                SqlCommand cm = new SqlCommand(store, oSqlConnection);
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.Parameters.AddWithValue("@IdCompania", obj.IdCompania);
+                cm.Parameters.AddWithValue("@ID", obj.IdProducto);
+                SqlDataReader dr = cm.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        DTOProductoRegister oProduct = new DTOProductoRegister();
+                        oProduct.Id = Convert.ToInt32(dr["Id"]);
+                        oProduct.Descripcion = dr["Descripcion"].ToString() ?? "";
+                        oProduct.Codigo = dr["Codigo"].ToString() ?? "";
+                        oProduct.IdTipo = Convert.ToInt32(dr["IdTipo"]);
+                        oProduct.Tipo = dr["Tipo"].ToString() ?? "";
+                        oProduct.IdUnidadMedida = Convert.ToInt32(dr["IdUnidadMedida"]);
+                        oProduct.Unidad = dr["Unidad"].ToString() ?? "";
+                        oProduct.StockMinimo = dr["StockMinimo"].ToString() ?? "0.000";
+                        oProduct.Reposicion = dr["Reposicion"].ToString() ?? "";
+                        oProduct.IdMarca = Convert.ToInt32(dr["IdMarca"]);
+                        oProduct.DescripcionMarca = dr["DescripcionMarca"].ToString() ?? "";
+                        oProduct.Estado = dr["Estado"].ToString() ?? "";
+                        oProduct.ArticuloCompra = Convert.ToBoolean(dr["ArticuloCompra"]);
+                        oProduct.ArticuloInventario = Convert.ToBoolean(dr["ArticuloInventario"]);
+                        Lista.Add(oProduct);
+                    }
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return Convert.ToInt32(dtResultado.Rows[0][0]);
+            return Lista;
         }
-
-        public DataTable fn_ObtenerProducto(string storedProcedure, int iDProducto, int iDCompania)
-        {
-            DataTable dtResultado = new DataTable();
-            try
-            {
-                SqlHelper helper = new SqlHelper(_context);
-                dtResultado = helper.fn_ObtenerResultado(storedProcedure, iDCompania, iDProducto);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return dtResultado;
-        }
-
-        public DataTable fn_ObtenerProductos(string v, int iDCompania)
-        {
-            DataTable dtResultado = new DataTable();
-            try
-            {
-                SqlHelper helper = new SqlHelper(_context);
-                dtResultado = helper.fn_ObtenerResultado(v, iDCompania);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return dtResultado;
-        }
-        public int fn_CrearProducto(string store, DTOProducto obj)
+        public int fn_CrearProducto(string store, DTOProductoCreate obj)
         {
             SqlConnection oSqlConnection = null;
 
@@ -90,10 +125,10 @@ namespace STN.Data.Producto
             }
             catch (Exception ex)
             {
-                return 0;
+                return -1;
             }
         }
-        public int fn_ActualizarProducto(string store, DTOProducto obj)
+        public int fn_ActualizarProducto(string store, DTOProductoUpdate obj)
         {
             SqlConnection oSqlConnection = null;
             try
@@ -117,8 +152,29 @@ namespace STN.Data.Producto
             }
             catch (Exception ex)
             {
-                return 0;
+                return -1;
             }
         }
+        public int fn_EliminarProducto(string store, DTOProducto obj)
+        {
+            SqlConnection oSqlConnection = null;
+            try
+            {
+                oSqlConnection = new SqlConnection(_context.Database.GetConnectionString());
+                oSqlConnection.Open();
+                SqlCommand cm = new SqlCommand(store, oSqlConnection);
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.Parameters.AddWithValue("@IdCompania", obj.IdCompania);
+                cm.Parameters.AddWithValue("@IdProducto", obj.IdProducto);
+                cm.ExecuteNonQuery();
+                int rpta = cm.ExecuteNonQuery();
+                return rpta;
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
+
     }
 }

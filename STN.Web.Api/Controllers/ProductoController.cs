@@ -27,11 +27,15 @@ namespace STN.Web.Api.Controllers
         public IActionResult Index([FromQuery] RequestProduct request)
         {
             Helper helper = new Helper();
+            DTOProducto obj = new DTOProducto()
+            {
+                IdCompania = request.IDCompania
+            };
             try
             {
-                var resultado = _bsProducto.ObtenerProductos(request.IDCompania);
+                var resultado = _bsProducto.ObtenerProductos(obj);
                 ResponseProducto response = new ResponseProducto();
-                if (resultado.Rows.Count == 0)
+                if (resultado.Count == 0)
                 {
                     response.status = 1;
                     response.mesage = "No se encontraron productos";
@@ -39,7 +43,8 @@ namespace STN.Web.Api.Controllers
                 else
                 {
                     response.status = 0;
-                    response.data = helper.ConvertDataTableToJson(resultado);
+                    response.mesage = "Consulta Exitosa";
+                    response.data = resultado;
                 }
                 return Ok(response);
             }
@@ -54,11 +59,16 @@ namespace STN.Web.Api.Controllers
         public IActionResult ObtenerProducto([FromQuery] RequestProductDetail request)
         {
             Helper helper = new Helper();
+            DTOProducto obj = new DTOProducto()
+            {
+                IdCompania = request.IDCompania,
+                IdProducto = request.IDProducto
+            };
             try
             {
-                var resultado = _bsProducto.ObtenerProducto(request.IDProducto, request.IDCompania);
-                ResponseProducto response = new ResponseProducto();
-                if (resultado.Rows.Count == 0)
+                var resultado = _bsProducto.ObtenerProducto(obj);
+                ResponseProductoDetail response = new ResponseProductoDetail();
+                if (resultado.Count == 0)
                 {
                     response.status = 1;
                     response.mesage = "No se encontraron productos";
@@ -66,7 +76,7 @@ namespace STN.Web.Api.Controllers
                 else
                 {
                     response.status = 0;
-                    response.data = helper.ConvertDataTableToJson(resultado);
+                    response.data = resultado;
                 }
                 return Ok(response);
             }
@@ -74,38 +84,24 @@ namespace STN.Web.Api.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-        }
-        [HttpDelete("EliminarProducto")]
+        }       
+        
+        [HttpPost("RegistrarProducto")]
         [Authorize]
-        public IActionResult Delete([FromQuery] RequestProductDetail request)
+        public IActionResult Create([FromBody] ModelProducto model)
         {
-            try
+            DTOProductoCreate obj = new DTOProductoCreate()
             {
-                var resultado = _bsProducto.EliminarProducto(request.IDProducto, request.IDCompania);
-                ResponseDeleteProducto response = new ResponseDeleteProducto();
-                if (resultado)
-                {
-                    response.status = 0;
-                    response.mesage = "Producto eliminado correctamente";
-                    response.data = true;
-                }
-                else
-                {
-                    response.status = 1;
-                    response.mesage = "No se pudo eliminar el producto";
-                    response.data = false;
-                }
-                return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
-        [HttpPost("RegistrarProducto")]        
-        public IActionResult Create([FromBody] DTOProducto obj)
-        {
-            Helper helper = new Helper();
+                IdCompania = model.IdCompania,
+                DescripcionProducto = model.DescripcionProducto,
+                IdTipo = model.IdTipo,
+                IdUnidadMedida = model.IdUnidadMedida,
+                StockMinimo = model.StockMinimo,
+                IdMarca = model.IdMarca,
+                ArticuloCompra = model.ArticuloCompra,
+                ArticuloInventario = model.ArticuloInventario,
+                Usuario = model.Usuario
+            };
             try
             {
                 var resultado = _bsProducto.CrearProducto(obj);
@@ -128,10 +124,24 @@ namespace STN.Web.Api.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        
         [HttpPut("ActualizarProducto")]
-        public IActionResult Update([FromBody] DTOProducto obj)
+        [Authorize]
+        public IActionResult Update([FromBody] ModelProducto model)
         {
-            Helper helper = new Helper();
+            DTOProductoUpdate obj = new DTOProductoUpdate()
+            {
+                IdProducto = model.IdProducto,
+                IdCompania = model.IdCompania,
+                DescripcionProducto = model.DescripcionProducto,
+                IdTipo = model.IdTipo,
+                IdUnidadMedida = model.IdUnidadMedida,
+                StockMinimo = model.StockMinimo,
+                IdMarca = model.IdMarca,
+                ArticuloCompra = model.ArticuloCompra,
+                ArticuloInventario = model.ArticuloInventario,
+                Usuario = model.Usuario
+            };
             try
             {
                 var resultado = _bsProducto.ActualizarProducto(obj);
@@ -148,6 +158,39 @@ namespace STN.Web.Api.Controllers
                     response.status = 1;
                     response.mesage = "No se pudo actualizar el producto";
                     response.result = false;
+                }
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        
+        [HttpDelete("EliminarProducto")]
+        [Authorize]
+        public IActionResult Delete([FromQuery] RequestProductDetail request)
+        {
+            DTOProducto obj = new DTOProducto()
+            {
+                IdCompania = request.IDCompania,
+                IdProducto = request.IDProducto
+            };
+            try
+            {
+                var resultado = _bsProducto.EliminarProducto(obj);
+                ResponseDeleteProducto response = new ResponseDeleteProducto();
+                if (resultado)
+                {
+                    response.status = 0;
+                    response.mesage = "Producto eliminado correctamente";
+                    response.data = true;
+                }
+                else
+                {
+                    response.status = 1;
+                    response.mesage = "No se pudo eliminar el producto";
+                    response.data = false;
                 }
                 return Ok(response);
             }
