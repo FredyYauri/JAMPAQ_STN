@@ -46,3 +46,7 @@ export const EditarProducto = (producto) => fetchData(`${uri}Producto/Actualizar
     method: 'PUT',
     body: JSON.stringify(producto)
 });
+
+export const ObtenerEquipos = () => fetchData(`${uri}Equipo/ObtenerEquipos?IDCompania=${IDCompania}`, {
+    method: 'GET',
+});

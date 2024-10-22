@@ -5,7 +5,7 @@ import DashboardPage from '../modules/dashboard/DashboardPage';
 import ProfilePage from '../modules/profile/ProfilePage';
 import PrivateRoute from './PrivateRoute';
 import { ProductPage } from '../modules/products/ProductPage';
-import {machineFile}from '../modules/machine/machineFile';
+import {MachinePage}from '../modules/machine/machinePage';
 import {MachineMaintenance} from '../modules/machine/MachineMaintenance';
 import {PersonalPage}from '../modules/Personal/PersonalPage';
 import {PaymentSlip} from '../modules/Personal/PaymentSlip';
@@ -21,7 +21,7 @@ const AppRouter = () => (
             <Route path="/dashboard/*" element={<PrivateRoute component={DashboardPage} />} />
             <Route path="/profile/*" element={<PrivateRoute component={ProfilePage} />} />
             <Route path="Logistica/Productos/*" element={<PrivateRoute component={ProductPage} />} />
-            <Route path="Equipos/Equipos/*"   element={<PrivateRoute component={machineFile}/>}/>
+            <Route path="Equipos/Equipos/*"   element={<PrivateRoute component={MachinePage}/>}/>
             <Route path="Equipos//MantenimientoEquipo/*" element={<PrivateRoute component={MachineMaintenance}/>}/>
             <Route path="RRHH/Personal/*" element={<PrivateRoute component={PersonalPage}/>}/>
             <Route path="RRHH/Salarios/*" element={<PrivateRoute component={PaymentSlip}/>}/>
