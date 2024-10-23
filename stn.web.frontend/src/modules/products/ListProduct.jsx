@@ -32,7 +32,11 @@ const ListProductComponent = () => {
 
     const listarProductos = () => {
         ObtenerProductos().then((data) => {
-            setFetchData(data.data);
+            if(data.status == 0){
+                setFetchData(data.data);
+            }else{
+                setFetchData([]);
+            }
             setLoading(false);
         });
     }
@@ -77,13 +81,14 @@ const ListProductComponent = () => {
             onCancel: () => setModalContent({ isOpen: false }),
             labelAction: 'Eliminar',
             onAction: () => {
+                setLoading(true);
                 EliminarProducto(id).then((data) => {
                     if (data.data) {
                         listarProductos();
-                        setModalContent({ isOpen: false })
                     } else {
                         showModalError('Error al eliminar el producto');
                     }
+                    setModalContent({ isOpen: false })
                 });
             }
         });

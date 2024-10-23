@@ -21,6 +21,7 @@ const ToDoList = ({ columns, data, options }) => {
   // Inicializar `filteredData` con los datos originales (`data`)
   useEffect(() => {
     setFilteredData(data);
+    setItems(data);
   }, [data]);
 
 // Función para manejar el filtrado

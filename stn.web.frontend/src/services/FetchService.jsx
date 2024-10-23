@@ -18,6 +18,7 @@ async function fetchData(url, options, requiredAuth = true) {
                 ...headers
             };
         }
+        console.log('options- fetchData', options);
         const objectRequest =  {
             method: options.method,
             headers: headers,
@@ -40,7 +41,7 @@ async function fetchData(url, options, requiredAuth = true) {
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Fetch error:', error);
+        console.error(url, ' ->Fetch error:', error);
         throw error;
     }
 }

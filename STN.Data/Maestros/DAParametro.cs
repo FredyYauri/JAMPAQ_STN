@@ -44,6 +44,10 @@ namespace STN.Data.Maestros
             catch (Exception ex)
             {
                 throw ex;
+            }finally
+            {
+                oSqlConnection.Close();
+                oSqlConnection.Dispose();
             }
             return listResponse;
         }

@@ -126,6 +126,8 @@ namespace STN.Web.Api.Controllers
         [Authorize]
         public IActionResult Update([FromBody] ModelEquipo model)
         {
+            try
+            {
             DTOEquipoUpdate obj = new DTOEquipoUpdate()
             {
                 IdEquipo = model.IdEquipo,
@@ -141,8 +143,6 @@ namespace STN.Web.Api.Controllers
                 ImporteMN = model.ImporteMN,
                 Usuario = model.Usuario
             };
-            try
-            {
                 var resultado = _bsEquipo.ActualizarEquipo(obj);
                 ResponseCreateEquipo response = new ResponseCreateEquipo();
 

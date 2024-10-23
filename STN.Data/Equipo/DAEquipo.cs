@@ -22,7 +22,8 @@ namespace STN.Data.Equipo
 
         public List<DTOEquipoGet> fn_ObtenerEquipos(string storedProcedure, int iDCompania)
         {
-            SqlConnection oSqlConnection = null;            
+            SqlConnection oSqlConnection = null; 
+            DTOEquipoGet response = new DTOEquipoGet();
             List<DTOEquipoGet> listResponse = new List<DTOEquipoGet>();
             try
             {
@@ -36,7 +37,7 @@ namespace STN.Data.Equipo
                 {
                     while (dr.Read())
                     {
-                        response.IdEquipo = Convert.ToInt32(dr["Id"]);
+                        response.Id = Convert.ToInt32(dr["Id"]);
                         response.Codigo = dr["Codigo"].ToString() ?? "";
                         response.Descripcion = dr["Descripcion"].ToString() ?? "";
                         response.Marca = dr["Marca"].ToString() ?? "";

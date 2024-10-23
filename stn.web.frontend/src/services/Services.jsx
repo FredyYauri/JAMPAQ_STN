@@ -24,7 +24,6 @@ export const ObtenerMarca = () => fetchData(`${uri}Maestro/ObtenerMarca?IDCompan
     method: 'GET',
 });
 
-
 export const ObtenerProductos = () => fetchData(`${uri}Producto/ObtenerProductos?IDCompania=${IDCompania}`, {
     method: 'GET',
 });
@@ -55,3 +54,20 @@ export const ObtenerEquipo = (IDEquipo) => fetchData(`${uri}Equipo/ObtenerEquipo
     method: 'GET',
 });
 
+export const EliminarEquipo = (IDEquipo) => fetchData(`${uri}Equipo/EliminarEquipo?IDCompania=${IDCompania}&IDEquipo=${IDEquipo}`, {
+    method: 'DELETE',
+});
+
+export const ObtenerParametros = (tabla) => fetchData(`${uri}Maestro/ObtenerParametros?IDCompania=${IDCompania}&Tabla=${tabla}`, {
+    method: 'GET',
+});
+
+export const GuardarEquipo = (equipo) => fetchData(`${uri}Equipo/RegistrarEquipo`, {
+    method: 'POST',
+    body: JSON.stringify(equipo)
+});
+
+export const EditarEquipo = (equipo) => fetchData(`${uri}Equipo/ActualizarEquipo`, {
+    method: 'PUT',
+    body: JSON.stringify(equipo)
+});

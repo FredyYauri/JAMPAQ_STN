@@ -1,16 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ToDoList from '../../components/common/ToDoList'
-import { ObtenerEquipos } from '../../services/Services';
+import { EliminarEquipo, ObtenerEquipos } from '../../services/Services';
 import { useStnStore } from '../../stores/useStateStore';
 import NewMachine from './NewMachine';
 import { DetailMachine } from './DetailMachine';
 
 export const ListMachine = () => {
-    const { setModalContent, showModalError } = useStnStore();
+    const { setModalContent, showModalError, setLoading } = useStnStore();
     const [optionsList, setOptionsList] = useState();
     const [fetchData, setFetchData] = useState([]);
     const formRef = useRef();
     useEffect(() => {
+        setLoading(true);
         setOptionsList({
             actions: true,
             update: {
@@ -25,16 +26,21 @@ export const ListMachine = () => {
             nameButtonAction: 'Nuevo Producto',
             acctionButton: showModalNewProduct,
         });
-        listarProductos();
+        listarEquipos();
     }, [])
 
-    const listarProductos = () => {
+    const listarEquipos = () => {
         ObtenerEquipos().then((data) => {
-            console.log('data:', data);
-            setFetchData(data.data);
+            if(data.status == 0){
+                setFetchData(data.data);
+            }else{
+                setFetchData([]);
+            }
+            setLoading(false);
         }).catch((e) => {
             console.error('Error fetching data:', e);
-            // showModalError();
+            setLoading(false);
+            showModalError('Error al obtener los equipos');
         });
     }
 
@@ -56,25 +62,41 @@ export const ListMachine = () => {
             title: 'Editar Equipo',
             body: (<NewMachine
                 ref={formRef}
-                idMachine = {id}
+                idMachine={id}
             />),
             labelClose: 'Cerrar',
             onCancel: () => setModalContent({ isOpen: false }),
+            labelAction: 'Guardar',
+            onAction: () => {
+                if (formRef.current) {
+                    formRef.current.EditarEquipo(listarEquipos);
+
+                }
+            },
         });
     }
     const deleteAction = (id) => {
         console.log('Eliminar:', id);
         setModalContent({
             isOpen: true,
+            size: 'sm',
             title: 'Eliminar Equipo',
-            body: '¿Está seguro de eliminar el equipo?',
+            body: `¿Está seguro de eliminar el equipo con ID: ${id}?`,
             labelClose: 'Cerrar',
             onCancel: () => setModalContent({ isOpen: false }),
             labelAction: 'Eliminar',
             onAction: () => {
-                console.log('Eliminar:', id);
-                setModalContent({ isOpen: false });
-            },
+                setLoading(true);
+                EliminarEquipo(id).then((data) => {
+                    console.log('data:', data);
+                    if (data.data) {
+                        listarEquipos();
+                    } else {
+                        showModalError('Error al eliminar el equipo');
+                    }
+                    setModalContent({ isOpen: false })
+                });
+            }
         });
     }
 
@@ -102,18 +124,19 @@ export const ListMachine = () => {
             labelAction: 'Guardar',
             onAction: () => {
                 if (formRef.current) {
-                    formRef.current.saveProduct(listarProductos);
+                    formRef.current.GuardarEquipo(listarEquipos);
 
                 }
             },
-        })}
+        })
+    }
 
-  return (
-    <div>
-    {optionsList && <ToDoList
-        options={optionsList}
-        data={fetchData}
-        columns={columns} />}
-</div>
-  )
+    return (
+        <div>
+            {optionsList && <ToDoList
+                options={optionsList}
+                data={fetchData}
+                columns={columns} />}
+        </div>
+    )
 }

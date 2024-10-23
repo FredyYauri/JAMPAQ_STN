@@ -52,8 +52,8 @@ export const DetailMachine = ({ IdMachine }) => {
                     <Row className='pb-1'><Form.Text><strong>Valor Registro Inicial:</strong> {machine.valor}</Form.Text></Row>
                     <Row className='pb-1'><Form.Text><strong>Tipo Mantenimiento:</strong> {machine.tipoMantenimientoDescripcion}</Form.Text></Row>
                     <Row className='pb-1'><Form.Text><strong>Valor Activo S/.:</strong> {machine.importeMN}</Form.Text></Row>
-                    <Row className='pb-1'><Form.Text><strong>Observaciones:</strong> {machine.estado == 1 ? 'Activo' : 'Inactivo'}</Form.Text></Row>
                     <Row className='pb-1'><Form.Text><strong>Estado:</strong> {machine.estado == 1 ? 'Activo' : 'Inactivo'}</Form.Text></Row>
+                    <Row className='pb-1'><Form.Text><strong>Observaciones:</strong> {machine.observaciones}</Form.Text></Row>
                 </Col>
             </Row>}
         </>
