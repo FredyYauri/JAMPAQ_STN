@@ -23,7 +23,7 @@ namespace STN.Web.Api.Controllers
         }
 
         [HttpGet("ObtenerProductos")]
-        
+        [Authorize]
         public IActionResult Index([FromQuery] RequestProduct request)
         {
             Helper helper = new Helper();

@@ -7,7 +7,7 @@ import { LoadSpinner } from '../../components/common/loaders/spinner';
 
 
 const NewMachine = forwardRef(({ idMachine }, ref) => {
-    const { setModalConfirm, closeModalContent } = useStnStore();
+    const { setModalConfirm, closeModalContent, setLoading } = useStnStore();
     const [errors, setErrors] = useState({});
     const [codigo, setCodigo] = useState('');
     const [descripcion, setDescripcion] = useState('');
@@ -67,6 +67,7 @@ const NewMachine = forwardRef(({ idMachine }, ref) => {
             const isValid = validateAllFields();
             if (isValid) {
                 const object = objectMachine();
+                setLoading(true);
                 GuardarEquipo(object).then((data) => {
                     console.log('Equipo guardado:', data);
                     if (data && data.status !== 0) {
@@ -87,6 +88,7 @@ const NewMachine = forwardRef(({ idMachine }, ref) => {
             const isValid = validateAllFields();
             if (isValid) {
                 const object = objectMachine();
+                setLoading(true);
                 EditarEquipo(object).then((data) => {
                     console.log('Producto Editar:', data);
                     if (data && data.status !== 0) {
@@ -144,7 +146,8 @@ const NewMachine = forwardRef(({ idMachine }, ref) => {
             body: "Error al guardar el producto",
             labelClose: 'Cerrar',
             onCancel: () => setModalConfirm({ isOpen: false }),
-        })
+        });
+        setLoading(false);
     }
 
 
@@ -197,6 +200,7 @@ const NewMachine = forwardRef(({ idMachine }, ref) => {
                                     type="text"
                                     className="text-dark ps-5"
                                     value={codigo}
+                                    disabled
                                     onChange={(e) => setCodigo(e.target.value)}
                                 />
                                 <i className="ri-ball-pen-line position-absolute top-50 start-0 translate-middle-y fs-20 ps-20"></i>

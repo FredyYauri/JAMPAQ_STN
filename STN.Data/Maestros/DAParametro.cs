@@ -20,34 +20,32 @@ namespace STN.Data.Maestros
         }
         public List<DTOParametro> fn_ObtenerParametros(string storedProcedure, string tabla)
         {
-            SqlConnection oSqlConnection = null;           
             List<DTOParametro> listResponse = new List<DTOParametro>();
             try
             {
-                oSqlConnection = new SqlConnection(_context.Database.GetConnectionString());
-                oSqlConnection.Open();
-                SqlCommand cm = new SqlCommand(storedProcedure, oSqlConnection);
-                cm.CommandType = CommandType.StoredProcedure;
-                cm.Parameters.AddWithValue("@Tabla", tabla);
-                SqlDataReader dr = cm.ExecuteReader();
-                if (dr.HasRows)
+                using (SqlConnection cn = new SqlConnection(_context.Database.GetConnectionString()))
                 {
-                    while (dr.Read())
+                    cn.Open();
+                    SqlCommand cm = new SqlCommand(storedProcedure, cn);
+                    cm.CommandType = CommandType.StoredProcedure;
+                    cm.Parameters.AddWithValue("@Tabla", tabla);
+                    SqlDataReader dr = cm.ExecuteReader();
+                    if (dr.HasRows)
                     {
-                        DTOParametro response = new DTOParametro();
-                        response.Id = Convert.ToInt32(dr["Id"]);
-                        response.Descripcion = dr["Descripcion"].ToString() ?? "";
-                        listResponse.Add(response);
+                        while (dr.Read())
+                        {
+                            DTOParametro response = new DTOParametro();
+                            response.Id = Convert.ToInt32(dr["Id"]);
+                            response.Descripcion = dr["Descripcion"].ToString() ?? "";
+                            listResponse.Add(response);
+                        }
                     }
                 }
+                    
             }
             catch (Exception ex)
             {
                 throw ex;
-            }finally
-            {
-                oSqlConnection.Close();
-                oSqlConnection.Dispose();
             }
             return listResponse;
         }
