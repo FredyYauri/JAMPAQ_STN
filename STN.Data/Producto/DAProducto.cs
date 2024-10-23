@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.Extensions.Configuration;
 using STN.Entitie.Producto;
-using STN.Entitie.Response;
 
 namespace STN.Data.Producto
 {
@@ -166,7 +165,6 @@ namespace STN.Data.Producto
                 cm.CommandType = CommandType.StoredProcedure;
                 cm.Parameters.AddWithValue("@IdCompania", obj.IdCompania);
                 cm.Parameters.AddWithValue("@IdProducto", obj.IdProducto);
-                cm.ExecuteNonQuery();
                 int rpta = cm.ExecuteNonQuery();
                 return rpta;
             }

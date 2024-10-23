@@ -22,8 +22,7 @@ namespace STN.Data.Equipo
 
         public List<DTOEquipoGet> fn_ObtenerEquipos(string storedProcedure, int iDCompania)
         {
-            SqlConnection oSqlConnection = null;
-            DTOEquipoGet response = new DTOEquipoGet();
+            SqlConnection oSqlConnection = null;            
             List<DTOEquipoGet> listResponse = new List<DTOEquipoGet>();
             try
             {
@@ -37,7 +36,7 @@ namespace STN.Data.Equipo
                 {
                     while (dr.Read())
                     {
-                        response.Id = Convert.ToInt32(dr["Id"]);
+                        response.IdEquipo = Convert.ToInt32(dr["Id"]);
                         response.Codigo = dr["Codigo"].ToString() ?? "";
                         response.Descripcion = dr["Descripcion"].ToString() ?? "";
                         response.Marca = dr["Marca"].ToString() ?? "";
@@ -168,7 +167,6 @@ namespace STN.Data.Equipo
                 cm.CommandType = CommandType.StoredProcedure;
                 cm.Parameters.AddWithValue("@IdCompania", obj.IdCompania);
                 cm.Parameters.AddWithValue("@IdEquipo", obj.IdEquipo);
-                cm.ExecuteNonQuery();
                 int rpta = cm.ExecuteNonQuery();
                 return rpta;
             }
