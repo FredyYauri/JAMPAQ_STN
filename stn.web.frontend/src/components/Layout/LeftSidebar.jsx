@@ -12,6 +12,7 @@ const LeftSidebar = ({ toogleActive }) => {
   const [nivel2, setNivel2] = useState([]);
   const [nivel3, setNivel3] = useState([]);
   useEffect(() => {
+    console.log(location);
     const usuario = sessionStorage.getItem('user');
     const request = {
       'idUsuario': (JSON.parse(usuario).IDUsuario).toString(),
@@ -69,6 +70,7 @@ const LeftSidebar = ({ toogleActive }) => {
                       <ul className="sub-menu">
                         {
                           subMenu.map((item2, index2) => {
+                            console.log(JSON.stringify(item2));
                             const subMenu2 = nivel3.filter(x => x.IDPaginaPadre == item2.IDPagina);
                             
                             return (
@@ -91,7 +93,7 @@ const LeftSidebar = ({ toogleActive }) => {
                                                   <ul className="sub-menu" style={{paddingLeft: 30}} key={index3}>
                                                     <li className="menu-item">
                                                       <a
-                                                        href={item3.Ruta}
+                                                        href= {`/${item3.Ruta}`}
                                                         className={`menu-link ${pathname === item3.Ruta ? "active" : ""
                                                           }`}
                                                       >
@@ -113,7 +115,7 @@ const LeftSidebar = ({ toogleActive }) => {
                                   <ul className="sub-menu" key={index2}>
                                     <li className="menu-item">
                                       <a
-                                        href={item2.Ruta}
+                                        href={`/${item2.Ruta}`}
                                         className={`menu-link ${pathname === item2.Ruta ? "active" : ""
                                           }`}
                                       >
