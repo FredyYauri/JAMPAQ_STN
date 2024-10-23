@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ToDoList from '../../components/common/ToDoList'
 import { ObtenerEquipos } from '../../services/Services';
 import { useStnStore } from '../../stores/useStateStore';
+import NewMachine from './NewMachine';
+import { DetailMachine } from './DetailMachine';
 
 export const ListMachine = () => {
     const { setModalContent, showModalError } = useStnStore();
     const [optionsList, setOptionsList] = useState();
     const [fetchData, setFetchData] = useState([]);
+    const formRef = useRef();
     useEffect(() => {
         setOptionsList({
             actions: true,
@@ -26,10 +29,12 @@ export const ListMachine = () => {
     }, [])
 
     const listarProductos = () => {
-        console.log("listarProductos")
         ObtenerEquipos().then((data) => {
             console.log('data:', data);
             setFetchData(data.data);
+        }).catch((e) => {
+            console.error('Error fetching data:', e);
+            // showModalError();
         });
     }
 
@@ -51,17 +56,57 @@ export const ListMachine = () => {
             title: 'Editar Equipo',
             body: (<NewMachine
                 ref={formRef}
-                idProduct = {id}
+                idMachine = {id}
             />),
             labelClose: 'Cerrar',
             onCancel: () => setModalContent({ isOpen: false }),
         });
     }
-    const deleteAction = (id) => {}
+    const deleteAction = (id) => {
+        console.log('Eliminar:', id);
+        setModalContent({
+            isOpen: true,
+            title: 'Eliminar Equipo',
+            body: '¿Está seguro de eliminar el equipo?',
+            labelClose: 'Cerrar',
+            onCancel: () => setModalContent({ isOpen: false }),
+            labelAction: 'Eliminar',
+            onAction: () => {
+                console.log('Eliminar:', id);
+                setModalContent({ isOpen: false });
+            },
+        });
+    }
 
-    const detailAction = (id) => {}
+    const detailAction = (id) => {
+        console.log('Detalle:', id);
+        setModalContent({
+            isOpen: true,
+            size: 'lg',
+            title: 'Detalle Equipo',
+            body: <DetailMachine IdMachine={id} />,
+            labelClose: 'Cerrar',
+            onCancel: () => setModalContent({ isOpen: false }),
+        });
+    }
 
-    const showModalNewProduct = () => {}
+    const showModalNewProduct = () => {
+        setModalContent({
+            isOpen: true,
+            title: 'Nuevo Equipo',
+            body: (<NewMachine
+                ref={formRef}
+            />),
+            labelClose: 'Cerrar',
+            onCancel: () => setModalContent({ isOpen: false }),
+            labelAction: 'Guardar',
+            onAction: () => {
+                if (formRef.current) {
+                    formRef.current.saveProduct(listarProductos);
+
+                }
+            },
+        })}
 
   return (
     <div>

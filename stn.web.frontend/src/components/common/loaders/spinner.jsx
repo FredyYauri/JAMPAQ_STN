@@ -1,7 +1,7 @@
 import React from 'react'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row, Spinner } from 'react-bootstrap'
 
-export const Spinner = () => {
+export const LoadSpinner = () => {
     return (
         <Container>
             <Row className="justify-content-center">

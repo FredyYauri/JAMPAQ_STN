@@ -71,7 +71,7 @@ namespace STN.Web.Api.Controllers
                 else
                 {
                     response.status = 0;
-                    response.data = resultado;
+                    response.data = resultado[0];
                 }
                 return Ok(response);
             }

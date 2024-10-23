@@ -50,3 +50,8 @@ export const EditarProducto = (producto) => fetchData(`${uri}Producto/Actualizar
 export const ObtenerEquipos = () => fetchData(`${uri}Equipo/ObtenerEquipos?IDCompania=${IDCompania}`, {
     method: 'GET',
 });
+
+export const ObtenerEquipo = (IDEquipo) => fetchData(`${uri}Equipo/ObtenerEquipo?IDCompania=${IDCompania}&IDEquipo=${IDEquipo}`, {
+    method: 'GET',
+});
+

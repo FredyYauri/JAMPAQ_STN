@@ -37,7 +37,7 @@ namespace STN.Data.Equipo
                 {
                     while (dr.Read())
                     {
-                        response.IdEquipo = Convert.ToInt32(dr["Id"]);
+                        response.Id = Convert.ToInt32(dr["Id"]);
                         response.Codigo = dr["Codigo"].ToString() ?? "";
                         response.Descripcion = dr["Descripcion"].ToString() ?? "";
                         response.Marca = dr["Marca"].ToString() ?? "";
@@ -76,6 +76,7 @@ namespace STN.Data.Equipo
                         DTOEquipoRegister response = new DTOEquipoRegister();
                         response.IdEquipo = Convert.ToInt32(dr["Id"]);
                         response.IdCompania = Convert.ToInt32(dr["IdCompania"]);
+                        response.Codigo = dr["Codigo"].ToString() ?? "";
                         response.Descripcion = dr["Descripcion"].ToString() ?? "";
                         response.Marca = dr["Marca"].ToString() ?? "";
                         response.Modelo = dr["Modelo"].ToString() ?? "";
@@ -83,6 +84,8 @@ namespace STN.Data.Equipo
                         response.TipoControl = Convert.ToInt32(dr["TipoControl"]);
                         response.Valor = Convert.ToDecimal(dr["Valor"]);
                         response.TipoMantenimiento = Convert.ToInt32(dr["TipoMantenimiento"]);
+                        response.TipoMantenimientoDescripcion = dr["TipoMantenimientoDescripcion"].ToString() ?? "";
+                        response.TipoControlDescripcion = dr["TipoControlDescripcion"].ToString() ?? "";
                         response.Observaciones = dr["Observaciones"].ToString() ?? "";
                         response.ImporteMN = Convert.ToDecimal(dr["ImporteMN"]);
                         response.Estado = Convert.ToBoolean(dr["Estado"]);

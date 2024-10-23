@@ -22,7 +22,7 @@ namespace STN.Web.Api.Entities
     {
         public int status { get; set; }
         public String mesage { get; set; } = "";
-        public List<DTOEquipoRegister> data { get; set; }
+        public DTOEquipoRegister data { get; set; }
     }
     public class ModelEquipo
     {
